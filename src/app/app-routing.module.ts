@@ -6,7 +6,7 @@ import { RecoveryComponent } from './components/recovery/recovery.component';
 
 const ruta: Routes = [
   {
-    path: 'login',
+    path: '',
     component: LoginComponent
   },
   {
