@@ -1,0 +1,60 @@
+*{
+    font-family: 'Poppins';
+}
+.header-register {
+    background-image: url(../../../assets/img/portada-registro.png);
+    width: 100%;
+    height: 7em;
+    position: relative;
+    background-size: cover;
+    background-position-y: 52%;
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 7em;
+        background: linear-gradient(#266AA7 ,#30D2F8 ); opacity: .8 ;
+    } 
+}
+
+.logo-tam-blanco{
+    top: 10px;
+    height: 90px;
+    width: 120px;
+    position: absolute;
+}
+
+.div-blue{
+    width: 100%;
+    height: 2px;
+    background: #266AA7;
+}
+
+.div-green{
+    width: 100%;
+    height: 2px;
+    background: #96C93C;
+}
+
+.requerid-fields{
+    color: #96C93C;
+}
+
+.text-info-personal{
+    color: #266AA7;
+}
+
+.btn-register{
+    background: #96C93C;
+    color: #fff;
+    border-radius: 20px;
+}
+
+
+.logo-tam{
+    height: 80px;
+    width: 120px;
+    margin-bottom: 20px;
+}

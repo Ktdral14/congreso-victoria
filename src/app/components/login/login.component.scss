@@ -1,11 +1,11 @@
     @font-face {
         font-family: Poppins;
-        src: url('../../../assets/fonts/Poppins-Regular.ttf');
+        src: url(../../../assets/fonts/Poppins-Regular.ttf);
     }
     
     @font-face {
         font-family: PoppinsB;
-        src: url('../../../assets/fonts/Poppins-Bold.ttf');
+        src: url(../../../assets/fonts/Poppins-Bold.ttf);
     }
     
     * {
@@ -35,7 +35,7 @@
     }
     
     .padre {
-        background: url("../../../assets/img/fondo.png");
+        background: url(../../../assets/img/fondo.png);
         width: 100%;
         height: 100vh;
         background-size: cover;
