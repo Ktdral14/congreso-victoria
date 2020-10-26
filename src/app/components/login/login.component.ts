@@ -20,4 +20,8 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/recovery');
   }
 
+  login(){
+    this.router.navigateByUrl('/home');
+  }
+
 }

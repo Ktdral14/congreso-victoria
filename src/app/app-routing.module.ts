@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddApplicantsComponent } from './components/add-applicants/add-applicants.component';
+import { AddProposalComponent } from './components/add-proposal/add-proposal.component';
 import { LoginComponent } from './components/login/login.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+
 
 
 const ruta: Routes = [
@@ -17,7 +21,22 @@ const ruta: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+
+  {
+    path: 'home', component: SidebarComponent, children: [
+      {
+        path: 'add-proposal',
+        component: AddProposalComponent
+      },
+      {
+        path: 'add-applicants',
+        component: AddApplicantsComponent
+      },
+
+    ]
   }
+
 ];
 
 @NgModule({

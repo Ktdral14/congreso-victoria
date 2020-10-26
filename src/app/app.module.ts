@@ -7,6 +7,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
+import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { AddProposalComponent } from './components/add-proposal/add-proposal.component';
+import { AddApplicantsComponent } from './components/add-applicants/add-applicants.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +17,9 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     RecoveryComponent,
     RegisterComponent,
+    SidebarComponent,
+    AddProposalComponent,
+    AddApplicantsComponent,
   ],
   imports: [
     BrowserModule,
