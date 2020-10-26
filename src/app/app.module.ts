@@ -10,6 +10,12 @@ import { RegisterComponent } from './components/register/register.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { AddProposalComponent } from './components/add-proposal/add-proposal.component';
 import { AddApplicantsComponent } from './components/add-applicants/add-applicants.component';
+import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+ 
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.dots
+};
+ 
 
 @NgModule({
   declarations: [
@@ -26,6 +32,7 @@ import { AddApplicantsComponent } from './components/add-applicants/add-applican
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgWizardModule.forRoot(ngWizardConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
