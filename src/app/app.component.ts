@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'congreso';
+  title = 'Premio estatal';
 
   constructor(private router: Router) { }
 

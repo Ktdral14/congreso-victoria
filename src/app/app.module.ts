@@ -12,8 +12,6 @@ import { AddProposalComponent } from './components/add-proposal/add-proposal.com
 import { AddApplicantsComponent } from './components/add-applicants/add-applicants.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
-import { PaginaRecuperacionComponent } from './components/pagina-recuperacion/pagina-recuperacion.component';
-import { PaginaConfirmarCuentaComponent } from './components/pagina-confirmar-cuenta/pagina-confirmar-cuenta.component';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.dots
@@ -29,8 +27,6 @@ const ngWizardConfig: NgWizardConfig = {
     SidebarComponent,
     AddProposalComponent,
     AddApplicantsComponent,
-    PaginaRecuperacionComponent,
-    PaginaConfirmarCuentaComponent,
   ],
   imports: [
     BrowserModule,

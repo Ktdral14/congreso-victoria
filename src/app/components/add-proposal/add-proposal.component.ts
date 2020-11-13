@@ -1,6 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { NgWizardConfig, THEME, StepChangedArgs, NgWizardService } from 'ng-wizard';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserData } from '../../models/user.model';
 
 
 @Component({
@@ -18,19 +20,38 @@ export class AddProposalComponent implements OnInit {
     theme: THEME.dots,
     toolbarSettings: {
       toolbarExtraButtons: [
-        { 
+        {
           text: 'Guardar', class: 'btn btn-primary', event: () => {
-            alert("Se registró correctamente!!!");
+            alert('Se registró correctamente!!!');
           }
         },
-        
+
       ]
     }
+  };
+
+  formPropuesta: FormGroup;
+  userData: UserData;
+  constructor(private ngWizardService: NgWizardService, private fb: FormBuilder) {
+    this.userData = JSON.parse(localStorage.getItem('session-data'));
+    this.formPropuesta = fb.group({
+        id_categorias: ['1'],
+        id_usuario: [this.userData.id_usuarios],
+        introduccion : ['', [Validators.required]],
+        objetivos : ['', [Validators.required]],
+        importancia : ['', [Validators.required]],
+        alineacion : ['', [Validators.required]],
+        descripcion : ['', [Validators.required]],
+        marco : ['', [Validators.required]],
+        etapas : ['', [Validators.required]],
+        experiencia : ['', [Validators.required]],
+        tipificacion : ['', [Validators.required]],
+        impacto : ['', [Validators.required]],
+        factibilidad : ['', [Validators.required]],
+        resultados : ['', [Validators.required]],
+        url : ['', [Validators.required]]
+    });
   }
-
-
-
-  constructor(private ngWizardService: NgWizardService) { }
 
   ngOnInit(): void {
   }
@@ -43,7 +64,7 @@ export class AddProposalComponent implements OnInit {
     this.ngWizardService.next();
   }
 
- 
+
   setTheme(theme: THEME) {
     this.ngWizardService.theme(theme);
   }
