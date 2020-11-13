@@ -22,6 +22,7 @@
     "ng-wizard": "^1.2.0",
     "rxjs": "~6.5.4",
     "smartwizard": "^5.1.1",
+    "sweetalert2": "^10.10.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

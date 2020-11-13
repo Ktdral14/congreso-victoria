@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="col-xs-8 col-sm-10 col-md-6 col-lg-4 mt-5">
-                <div class="login">
+                <form class="login" [formGroup]="formSignIn">
                     <div class="contenido">
                         <div class="iniciar">
                             <h5 class="">Iniciar Sesion</h5>
@@ -20,27 +20,26 @@
                             <label for="">Email</label>
                         </div>
                         <div class="input-group form-group">
-                            <i class="far fa-envelope icon"></i>
-                            <input type="text" placeholder="Email" class="form-control input-form ">
+                            <input formControlName="correo" type="text" placeholder="Email" class="form-control input-form ">
                         </div>
                         <div class="password">
                             <label for="">Contraseña</label>
                         </div>
                         <div class="password form-group">
-                            <input type="password" placeholder="Contraseña" class="form-control input-form">
+                            <input formControlName="contrasena" type="password" placeholder="Contraseña" class="form-control input-form">
                         </div>
                         <div class="olvidar">
                             <p>¿Olvidaste tu contraseña? <a href="" [routerLink]="['/recovery']" class="color:blue;">Click aqui</a></p>
                         </div>
                         <div class="button">
-                            <button class="btn btn-primary" (click)="login()">Iniciar Sesion</button>
+                            <button class="btn btn-primary" [disabled]="formSignIn.invalid" (click)="login()">Iniciar Sesion</button>
                         </div><br>
                         <div class="cuenta">
                             <p>¿No estas registrado?</p>
                             <a href="" [routerLink]="['/register']" class="color:blue;">Crea una cuenta</a>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

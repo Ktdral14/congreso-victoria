@@ -10,12 +10,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { AddProposalComponent } from './components/add-proposal/add-proposal.component';
 import { AddApplicantsComponent } from './components/add-applicants/add-applicants.component';
+import { HttpClientModule } from '@angular/common/http';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
- 
+import { PaginaRecuperacionComponent } from './components/pagina-recuperacion/pagina-recuperacion.component';
+import { PaginaConfirmarCuentaComponent } from './components/pagina-confirmar-cuenta/pagina-confirmar-cuenta.component';
+
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.dots
 };
- 
+
 
 @NgModule({
   declarations: [
@@ -26,13 +29,16 @@ const ngWizardConfig: NgWizardConfig = {
     SidebarComponent,
     AddProposalComponent,
     AddApplicantsComponent,
+    PaginaRecuperacionComponent,
+    PaginaConfirmarCuentaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgWizardModule.forRoot(ngWizardConfig)
+    NgWizardModule.forRoot(ngWizardConfig),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { PaginaRecuperacionComponent } from './components/pagina-recuperacion/pagina-recuperacion.component';
+import { PaginaConfirmarCuentaComponent } from './components/pagina-confirmar-cuenta/pagina-confirmar-cuenta.component';
 
 
 
@@ -13,6 +15,14 @@ const ruta: Routes = [
   {
     path: '',
     component: LoginComponent
+  },
+  {
+    path: 'pagina-recuperar-contraseña/:tk',
+    component: PaginaRecuperacionComponent
+  },
+  {
+    path: 'pagina-confirmar-correo/:tk',
+    component: PaginaConfirmarCuentaComponent
   },
   {
     path: 'recovery',

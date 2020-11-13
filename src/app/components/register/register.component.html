@@ -13,27 +13,27 @@
             <h6 class="font-weight-light">Bienvenido, ingresa los datos para poder registrarse</h6>
             <div class="div-blue"></div>
             <h4 class="text-info-personal mt-4">Información personal</h4>
-            <form class="mt-2">
+            <form class="mt-2" [formGroup]="formRegister">
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="nombre">Nombre <span class="requerid-fields">*</span>:</label>
-                        <input type="text" placeholder="Nombre" class="form-control" id="nombre" required>
+                        <input type="text" formControlName="nombres" placeholder="Nombre" class="form-control" id="nombre" required>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="apellidoPaterno">Apellido paterno <span class="requerid-fields">*</span>:</label>
-                        <input type="text" placeholder="Apellido paterno" class="form-control" id="apellidoPaterno"
+                        <input type="text" formControlName="a_paterno" placeholder="Apellido paterno" class="form-control" id="apellidoPaterno"
                             required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="apellidoMaterno">Apellido materno <span class="requerid-fields">*</span>:</label>
-                        <input type="text" placeholder="Apellido materno" class="form-control" id="apellidoMaterno"
+                        <input type="text" formControlName="a_materno" placeholder="Apellido materno" class="form-control" id="apellidoMaterno"
                             required>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="fechaNac">Fecha de nacimiento <span class="requerid-fields">*</span>:</label>
-                        <input type="date" placeholder="Apellido materno" class="form-control" id="fechaNac" required>
+                        <input type="date" formControlName="fecha_nacimiento" placeholder="Apellido materno" class="form-control" id="fechaNac" required>
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="sexo">Sexo <span class="requerid-fields">*</span>:</label>
-                            <select class="form-control" id="sexo">
+                            <select formControlName="sexo" class="form-control" id="sexo">
                                 <option>Masculino</option>
                                 <option>Femenino</option>
                                 <option>Otro</option>
@@ -49,62 +49,60 @@
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <fieldset disabled>
-                            <label for="especifique">Especifique<span class="requerid-fields">*</span>:</label>
-                            <input type="text" placeholder="Especifique" class="form-control" id="especifique" required>
-                        </fieldset>
+                        <label for="codigo-postal">Código postal<span class="requerid-fields">*</span>: </label>
+                        <label *ngIf="!validCP" for="codigo-postal"> <span class="requerid-fields" style="color: red;">-error</span></label>
+                        <input (keyup)="cambioCP($event)" type="text" placeholder="Código postal" class="form-control" id="cp" required>
                     </div>
                 </div>
-
 
                 <h4 class="text-info-personal mt-4">Información del domicilio</h4>
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="estado">Estado <span class="requerid-fields">*</span>:</label>
-                        <input type="text" placeholder="Estado" class="form-control" id="estado" required>
+                        <input type="text" formControlName="estado" placeholder="Estado" class="form-control" id="estado" required>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="municipio">Municipio <span class="requerid-fields">*</span>:</label>
-                        <input type="text" placeholder="Municipio" class="form-control" id="municipio" required>
+                        <label for="municipio">Ciudad <span class="requerid-fields">*</span>:</label>
+                        <input type="text" formControlName="ciudad" placeholder="Municipio" class="form-control" id="municipio" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="colonia">Colonia <span class="requerid-fields">*</span>:</label>
-                        <input type="text" placeholder="Colonia" class="form-control" id="colonia" required>
+                        <input type="text" formControlName="colonia" placeholder="Colonia" class="form-control" id="colonia" required>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="calle">Calle <span class="requerid-fields">*</span>:</label>
-                        <input type="text" placeholder="Calle" class="form-control" id="calle" required>
+                        <input type="text" formControlName="calle" placeholder="Calle" class="form-control" id="calle" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
-                        <label for="noInterior">No. Interior <span class="requerid-fields">*</span>:</label>
-                        <input type="text" placeholder="No. Interior" class="form-control" id="noInterior" required>
+                        <label for="noInterior">No. Interior:</label>
+                        <input type="text" formControlName="num_int" placeholder="No. Interior" class="form-control" id="noInterior">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="noExterior">No. exterior <span class="requerid-fields">*</span>:</label>
-                        <input type="text" placeholder="No. exterior" class="form-control" id="noExterior">
+                        <input type="text" formControlName="num_ext" placeholder="No. exterior" class="form-control" id="noExterior">
                     </div>
                 </div>
 
                 <h4 class="text-info-personal mt-4">Información de la cuenta</h4>
 
                 <label for="correo">Correo <span class="requerid-fields">*</span>:</label>
-                <input type="email" placeholder="Correo" class="form-control" id="correo" required>
+                <input type="email" formControlName="correo" placeholder="Correo" class="form-control" id="correo" required>
 
                 <div class="form-row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="contraseña">Contraseña <span class="requerid-fields">*</span>:</label>
-                        <input type="password" placeholder="Contraseña" class="form-control" id="contraseña" required>
+                        <input type="password" formControlName="contrasena" placeholder="Contraseña" class="form-control" id="contraseña" required>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="confirmarContraseña">Confirmar contraseña <span
                                 class="requerid-fields">*</span>:</label>
-                        <input type="password" placeholder="Confirmar contraseña" class="form-control"
+                        <input type="password" formControlName="contrasena" placeholder="Confirmar contraseña" class="form-control"
                             id="confirmarContraseña">
                     </div>
                 </div>
@@ -113,7 +111,7 @@
                 <div class="div-green mt-3 mb-2"></div>
                 <div class="row justify-content-center mt-4">
                     <div class="col-6">
-                        <button class="btn btn-register btn-block mb-3" type="submit">Crear cuenta</button>
+                        <button class="btn btn-register btn-block mb-3" (click)="registerUser()" [disabled]="formRegister.invalid" type="submit">Crear cuenta</button>
                     </div>
                 </div>
             </form>
