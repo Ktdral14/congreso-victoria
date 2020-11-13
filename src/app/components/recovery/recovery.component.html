@@ -2,12 +2,14 @@
     <div class="principal d-flex align-items-center justify-content-center container-fluid">
         <div class="row">
             <div class="image d-none d-lg-block col-lg-2 mt-5">
-                <img src="../../../assets/img/logotam.png" alt="">
+                <img src="../../../assets/img/logotam.png" alt="" />
             </div>
             <div class="d-none d-md-flex d-xs-none col-md-4 col-lg-4 align-items-center justify-content-center">
                 <div class="text">
                     <h3>HOLA, BIENVENIDO</h3>
-                    <p>PLATAFORMA DE REGISTRO Y EVALUACION DEL PREMIO ESTATAL DE LA INNOVACION, "EL PREMIO TAMAULIPAS ICT"</p>
+                    <p>
+                        PLATAFORMA DE REGISTRO Y EVALUACION DEL PREMIO ESTATAL DE LA INNOVACION, "EL PREMIO TAMAULIPAS ICT"
+                    </p>
                 </div>
             </div>
             <div class="col-xs-8 col-sm-10 col-md-6 col-lg-4 mt-1">
@@ -20,13 +22,17 @@
                             <label for="">Email</label>
                         </div>
                         <div class="input-group form-group">
-                            <input type="text" placeholder="Email" class="form-control input-form ">
+                            <i class="far fa-envelope icon"></i>
+                            <input type="text" placeholder="Email" class="form-control input-form" #correo />
                         </div>
                         <div class="button">
-                            <button class="btn btn-primary">Recuperar</button>
+                            <button class="btn btn-primary" (click)="recovery(correo.value)"> Recuperar
+                                </button>
                         </div>
                         <div class="inicio mt-4">
-                            <a href="" [routerLink]="['/']" class="color:blue;">Iniciar sesion</a>
+                            <a href="" [routerLink]="['/']" class="color:blue;">
+                                    Iniciar sesion
+                                </a>
                         </div>
                     </div>
                 </div>
