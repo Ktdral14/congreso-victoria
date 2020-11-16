@@ -20,20 +20,21 @@
                     <i class="fas fa-home"></i><span> Inicio <i
                             class="fas fa-chevron-right drop-down"></i></span>
                 </a>
+                <a [routerLink]="['add-applicants']" routerLinkActive="active" class="menu-btn">
+                    <i class="fas fa-users"></i><span> Registro <i
+                            class="fas fa-chevron-right drop-down"></i></span>
+                </a>
 
                 <a [routerLink]="['add-proposal']" routerLinkActive="active" class="menu-btn">
                     <i class="far fa-file-alt"></i><span> Propuesta <i
                             class="fas fa-chevron-right drop-down"></i></span>
                 </a>
 
-                <a [routerLink]="['add-applicants']" routerLinkActive="active" class="menu-btn">
-                    <i class="fas fa-users"></i><span> Aspirantes <i
-                            class="fas fa-chevron-right drop-down"></i></span>
-                </a>
-                <a [routerLink]="['']" class="menu-btn" style="cursor: pointer;">
+
+                <a [routerLink]="['']" class="menu-btn" style="cursor: pointer;" (click)="cerrar()">
                     <i class="fas fa-times-circle"></i><span> Cerrar sesión</span>
                 </a>
-              
+
             </li>
 
         </div>
