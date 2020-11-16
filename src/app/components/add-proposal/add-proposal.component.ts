@@ -105,6 +105,7 @@ export class AddProposalComponent implements OnInit {
         .subscribe(data => {
           console.log(data);
           if (!data.error) {
+            this.descargarAcusePDF();
             Swal.fire({
               title: 'Su propuesta se registro correctamente',
               icon: 'success',
@@ -189,50 +190,24 @@ export class AddProposalComponent implements OnInit {
     localStorage.setItem('propuesta-' + this.userData.id_usuarios,  JSON.stringify(this.formPropuesta.value));
   }
 
-
-  generarPDF() {
-    const lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto labore molestiae sint voluptatum! Soluta laudantium iusto dolor ipsam, voluptatibus repellat explicabo, dolore quibusdam ut eum aliquid adipisci? Nulla, facilis adipisci corporis cum consequatur molestiae porro quibusdam atque iste modi mollitia. Necessitatibus voluptate, vitae maxime corporis ex corrupti sunt officia quia repudiandae, dignissimos atque totam unde. Blanditiis commodi, possimus illo accusamus eligendi soluta suscipit velit voluptatibus hic voluptas iste tempora amet ducimus ipsum quod deleniti ut dolores nam unde consectetur. Beatae dolorum nesciunt odit repellendus non, eum, totam molestias illo corrupti unde, rem ducimus laudantium. Sapiente sunt fugit quod repellendus, error enim, architecto et laudantium sit minus adipisci! Autem aperiam veniam libero saepe laborum quidem, iure dicta beatae provident obcaecati repudiandae in minus debitis quae? Vero, magnam ducimus maxime pariatur repudiandae nisi aspernatur animi et, ratione vel esse ex perspiciatis deleniti.";
-  }
-
-
-
   descargarAcusePDF() {
     // declaracion pdf
     const documentoPDF1 = new jsPDF('p', 'in', 'letter');
     // campos
-    const campo1 = "";
-    const campo2 = "";
-    const campo3 = ""
-    const campo4 = ""
-    const campo5 = ""
-    const campo6 = ""
-    const campo7 = ""
-    const campo8 = ""
-    const campo9 = ""
-    const campo10 = ""
-    const campo11 = ""
-    const campo12 = ""
-    const campo13 = ""
-    const campo14 = ""
-
-
-    // borrar
-    const lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit reiciendis illo sequi unde dolor. Quos pariatur, quibusdam ipsa nobis cum velit saepe similique vitae veritatis ad omnis beatae cupiditate quasi blanditiis modi, unde magni nesciunt tempora aliquid molestiae est esse sunt! Tempora consequatur corrupti ipsa accusantium pariatur vel quod, unde modi obcaecati maiores rem, ullam ipsum natus praesentium similique! Suscipit omnis dolore, nihil error totam quam! Ipsa dignissimos adipisci culpa, voluptate maiores recusandae repudiandae similique illum tempore maxime pariatur libero architecto vel, optio eius. Recusandae culpa tempora maiores veritatis rerum beatae minus inventore quos voluptas ratione? Tenetur, possimus corporis asperiores temporibus est iste cum quo. At architecto, libero earum reprehenderit aperiam molestiae quas deserunt eveniet fuga nostrum, dolore unde! Eum fugit optio omnis blanditiis, ut, nesciunt dignissimos labore tempore placeat, quo velit. Esse ea similique iure fugiat, mollitia ut doloremque aut nisi voluptatem facere. Laborum pariatur mollitia inventore at molestias, dignissimos facilis consequuntur omnis repellat natus iusto voluptate iure quod earum nobis maiores rerum impedit corrupti nisi! Quisquam cupiditate mollitia ipsam maxime amet veniam dignissimos eos inventore officiis dolor commodi, quis eligendi est ratione quidem corporis quaerat corrupti soluta dolores doloremque quibusdam aperiam eum aliquam quia! Eos reprehenderit consequuntur eum!";
-    const loremAux1 = lorem.substring(0, 115);
-    const loremAux2 = lorem.substring(115, 230);
-    const loremAux3 = lorem.substring(230, 340);
-    const loremAux4 = lorem.substring(340, 460);
-    const loremAux5 = lorem.substring(460, 575);
-    const loremAux6 = lorem.substring(575, 690);
-    const loremAux7 = lorem.substring(690, 805);
-    const loremAux8 = lorem.substring(805, 920);
-    const loremAux9 = lorem.substring(920, 1035);
-    const loremAux10 = lorem.substring(1035, 1150);
-    const loremAux11 = lorem.substring(1150, 1265);
-
-    const link = "Este es el link del video";
-
-
+    const campo1 = this.formPropuesta.value.introduccion;
+    const campo2 = this.formPropuesta.value.objetivos;
+    const campo3 = this.formPropuesta.value.importancia;
+    const campo4 = this.formPropuesta.value.alineacion;
+    const campo5 = this.formPropuesta.value.descripcion;
+    const campo6 = this.formPropuesta.value.identificacion;
+    const campo7 = this.formPropuesta.value.marco;
+    const campo8 = this.formPropuesta.value.etapas;
+    const campo9 = this.formPropuesta.value.experiencia;
+    const campo10 = this.formPropuesta.value.tipificacion;
+    const campo11 = this.formPropuesta.value.impacto;
+    const campo12 = this.formPropuesta.value.factibilidad;
+    const campo13 = this.formPropuesta.value.resultados;
+    const campo14 = this.formPropuesta.value.url;
 
     // campo 1
     const campo1Aux1 = campo1.substring(0, 115);
@@ -365,17 +340,17 @@ export class AddProposalComponent implements OnInit {
     const campo10Aux11 = campo10.substring(1150, 1265);
 
     // campo 11
-    const campo11Aux1 = campo2.substring(0, 115);
-    const campo11Aux2 = campo2.substring(115, 230);
-    const campo11Aux3 = campo2.substring(230, 340);
-    const campo11Aux4 = campo2.substring(340, 460);
-    const campo11Aux5 = campo2.substring(460, 575);
-    const campo11Aux6 = campo2.substring(575, 690);
-    const campo11Aux7 = campo2.substring(690, 805);
-    const campo11Aux8 = campo2.substring(805, 920);
-    const campo11Aux9 = campo2.substring(920, 1035);
-    const campo11Aux10 = campo2.substring(1035, 1150);
-    const campo11Aux11 = campo2.substring(1150, 1265);
+    const campo11Aux1 = campo11.substring(0, 115);
+    const campo11Aux2 = campo11.substring(115, 230);
+    const campo11Aux3 = campo11.substring(230, 340);
+    const campo11Aux4 = campo11.substring(340, 460);
+    const campo11Aux5 = campo11.substring(460, 575);
+    const campo11Aux6 = campo11.substring(575, 690);
+    const campo11Aux7 = campo11.substring(690, 805);
+    const campo11Aux8 = campo11.substring(805, 920);
+    const campo11Aux9 = campo11.substring(920, 1035);
+    const campo11Aux10 = campo11.substring(1035, 1150);
+    const campo11Aux11 = campo11.substring(1150, 1265);
 
     // campo 12
     const campo12Aux1 = campo12.substring(0, 115);
@@ -420,32 +395,32 @@ export class AddProposalComponent implements OnInit {
     documentoPDF1.text("Origenes y antecedentes del problema objeto del proyecto:", 0.7, 2.8).setFontSize(12);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo1Aux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo1Aux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo1Aux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo1Aux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo1Aux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo1Aux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo1Aux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo1Aux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo1Aux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo1Aux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo1Aux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(12).setTextColor("#2B282A");
     documentoPDF1.text("Objetivos científicos, tecnológicos y en su caso de innovación:", 0.7, 5.4).setFontSize(12);
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo2Aux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo2Aux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo2Aux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo2Aux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo2Aux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo2Aux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo2Aux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo2Aux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo2Aux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo2Aux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo2Aux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
     documentoPDF1.addPage();
 
@@ -461,32 +436,32 @@ export class AddProposalComponent implements OnInit {
     documentoPDF1.text("Importancia y justificación del tema objeto del proyecto:", 0.7, 2.8).setFontSize(12);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo3Aux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo3Aux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo3Aux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo3Aux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo3Aux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo3Aux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo3Aux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo3Aux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo3Aux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo3Aux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo3Aux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(12).setTextColor("#2B282A");
     documentoPDF1.text("Alineación al Plan Estatal de Desarrollo 2016-2022:", 0.7, 5.4).setFontSize(12);
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo4Aux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo4Aux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo4Aux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo4Aux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo4Aux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo4Aux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo4Aux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo4Aux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo4Aux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo4Aux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo4Aux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
 
 
@@ -506,32 +481,32 @@ export class AddProposalComponent implements OnInit {
     documentoPDF1.text("Descripción de la propuesta:", 0.7, 2.8).setFontSize(12);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo5Aux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo5Aux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo5Aux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo5Aux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo5Aux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo5Aux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo5Aux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo5Aux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo5Aux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo5Aux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo5Aux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(12).setTextColor("#2B282A");
     documentoPDF1.text("Identificación de los nuevos hallazgos:", 0.7, 5.4).setFontSize(12);
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo6Aux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo6Aux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo6Aux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo6Aux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo6Aux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo6Aux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo6Aux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo6Aux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo6Aux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo6Aux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo6Aux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
     documentoPDF1.addPage();
 
@@ -547,34 +522,32 @@ export class AddProposalComponent implements OnInit {
     documentoPDF1.text("Marco metodológico de referencia:", 0.7, 2.8).setFontSize(12);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo7Aux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo7Aux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo7Aux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo7Aux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo7Aux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo7Aux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo7Aux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo7Aux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo7Aux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo7Aux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo7Aux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(12).setTextColor("#2B282A");
     documentoPDF1.text("Etapas y alcances de la propuesta:", 0.7, 5.4).setFontSize(12);
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-
-
+    documentoPDF1.text(campo8Aux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo8Aux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo8Aux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo8Aux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo8Aux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo8Aux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo8Aux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo8Aux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo8Aux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo8Aux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo8Aux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
 
     // parte 3
@@ -593,32 +566,32 @@ export class AddProposalComponent implements OnInit {
     documentoPDF1.text("Experiencia científico técnica alcanzada:", 0.7, 2.8).setFontSize(12);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo9Aux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo9Aux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo9Aux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo9Aux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo9Aux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo9Aux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo9Aux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo9Aux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo9Aux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo9Aux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo9Aux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(12).setTextColor("#2B282A");
     documentoPDF1.text("Tipificación de la vinculación institucional y organizacional:", 0.7, 5.4).setFontSize(12);
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo10Aux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo10Aux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo10Aux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo10Aux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo10Aux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo10Aux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo10Aux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo10Aux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo10Aux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo10Aux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo10Aux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
     documentoPDF1.addPage();
 
@@ -634,32 +607,32 @@ export class AddProposalComponent implements OnInit {
     documentoPDF1.text("Identificación del impacto económico y social:", 0.7, 2.8).setFontSize(12);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo11Aux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo11Aux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo11Aux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo11Aux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo11Aux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo11Aux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo11Aux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo11Aux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo11Aux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo11Aux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo11Aux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(12).setTextColor("#2B282A");
     documentoPDF1.text("Factibilidad económica:", 0.7, 5.4).setFontSize(12);
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo12Aux1, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo12Aux2, 0.7, 5.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo12Aux3, 0.7, 6.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo12Aux4, 0.7, 6.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo12Aux5, 0.7, 6.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo12Aux6, 0.7, 6.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo12Aux7, 0.7, 6.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo12Aux8, 0.7, 7.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo12Aux9, 0.7, 7.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo12Aux10, 0.7, 7.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo12Aux11, 0.7, 7.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
 
     documentoPDF1.addPage();
@@ -676,26 +649,26 @@ export class AddProposalComponent implements OnInit {
     documentoPDF1.text("Resultados esperados:", 0.7, 2.8).setFontSize(12);
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(loremAux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
-    documentoPDF1.text(loremAux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
-
+    documentoPDF1.text(campo13Aux1, 0.7, 3.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo13Aux2, 0.7, 3.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo13Aux3, 0.7, 3.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo13Aux4, 0.7, 3.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo13Aux5, 0.7, 3.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo13Aux6, 0.7, 4.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo13Aux7, 0.7, 4.3, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo13Aux8, 0.7, 4.5, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo13Aux9, 0.7, 4.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo13Aux10, 0.7, 4.9, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo13Aux11, 0.7, 5.1, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
 
     documentoPDF1.text('', 0.7, 1.5).setFontSize(12).setTextColor("#2B282A");
-    documentoPDF1.text("URL del vídeo con duración entre tres o cinco minutos:", 0.7, 5.4).setFontSize(12);
+    documentoPDF1.text("URL del vídeo:", 0.7, 5.4).setFontSize(12);
     documentoPDF1.text('', 0.7, 1.5).setFontSize(10).setTextColor("#707070");
-    documentoPDF1.text(link, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
+    documentoPDF1.text(campo14, 0.7, 5.7, { maxWidth: 180, align: "justify" }).setFontSize(10);
 
 
+// ok
     documentoPDF1.save("Acuse registro.pdf");
 
 
