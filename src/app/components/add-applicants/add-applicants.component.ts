@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@an
 import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 import { ApplicantsService } from '../../services/applicants.service';
 import swal from 'sweetalert2';
+import { UserData } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-add-applicants',
@@ -27,11 +28,19 @@ export class AddApplicantsComponent implements OnInit {
     read: ElementRef
   }) estructura: ElementRef;
 
+  userData: UserData;
+  registroTerminado = false;
   constructor(
     private formBuilder: FormBuilder,
     private applicants: ApplicantsService,
     private cd: ChangeDetectorRef
   ) {
+    this.userData = JSON.parse(localStorage.getItem('session-data'));
+    const propuestaData = JSON.parse(localStorage.getItem('registro-' + this.userData.id_usuarios));
+    if (!propuestaData) {
+      localStorage.setItem('registro-' + this.userData.id_usuarios, JSON.stringify({termino: false}));
+    }
+    this.registroTerminado = JSON.parse(localStorage.getItem('registro-' + this.userData.id_usuarios)).termino;
     this.formAspirante = this.formBuilder.group({
      nombre_propuesta: ['', [Validators.required, Validators.maxLength(30)]],
      p_aspirante: ['', Validators.required],
@@ -69,23 +78,22 @@ export class AddApplicantsComponent implements OnInit {
         swal.fire({
           icon: 'success',
           title: 'Registro exitoso'
+        }).then(() => {
+          localStorage.setItem('registro-' + this.userData.id_usuarios, JSON.stringify({termino: true}));
+          this.registroTerminado = JSON.parse(localStorage.getItem('termino-' + this.userData.id_usuarios)).termino;
+          window.location.reload();
         });
         console.log(data);
-        
       },
       err => {
-        
         swal.fire({
           icon: 'warning',
           title: 'Ha ocurrido un error al registrar',
           text: 'Favor de revisar que todos los campos se encuentren llenos y el peso de los archivos sea el'
         });
         console.log(err);
-        
       }
-
-    );  
-    
+    );
   }
 
 

@@ -40,12 +40,11 @@ export class LoginComponent implements OnInit {
         } else {
           Swal.fire({
             title: 'Ocurrio un error',
-            text: 'Ocurrio un error al iniciar sesión',
+            text: 'Ocurrio un error al iniciar sesión, la contraseña o el correo son incorrectos',
             icon: 'error'
           });
         }
       }, err => console.log(err));
-    this.router.navigateByUrl('/home');
   }
 
 }
