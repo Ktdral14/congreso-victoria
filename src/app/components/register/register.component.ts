@@ -56,6 +56,8 @@ export class RegisterComponent implements OnInit {
             title: 'Ocurrio un error al registrar',
             icon: 'error'
           });
+          console.log(data.error);
+          
         }
       }, err => console.log(err));
   }

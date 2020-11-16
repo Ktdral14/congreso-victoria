@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   public toggleClass: boolean = false;
 
@@ -16,11 +19,16 @@ export class SidebarComponent implements OnInit {
   }
 
   toggle(){
-    if(!this.toggleClass){
+    if (!this.toggleClass) {
       this.toggleClass = true;
-    }else{
+    } else {
       this.toggleClass = false;
     }
+  }
+
+  cerrar() {
+    localStorage.setItem('session-data', '');
+    window.location.reload();
   }
 
 }
