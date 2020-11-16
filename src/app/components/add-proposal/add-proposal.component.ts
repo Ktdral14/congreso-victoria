@@ -41,12 +41,18 @@ export class AddProposalComponent implements OnInit {
   palabrasEscritas = [];
   cantidadPalabras = 0;
   cantidadLimite = false;
+  propuestaTermianda = false;
   constructor(
     private ngWizardService: NgWizardService,
     private formBuilder: FormBuilder,
     private proposalService: ProposalService
   ) {
     this.userData = JSON.parse(localStorage.getItem('session-data'));
+    const propuestaData = JSON.parse(localStorage.getItem('termino-' + this.userData.id_usuarios));
+    if (!propuestaData) {
+      localStorage.setItem('termino-' + this.userData.id_usuarios, JSON.stringify({termino: false}));
+    }
+    this.propuestaTermianda = JSON.parse(localStorage.getItem('termino-' + this.userData.id_usuarios)).termino;
     this.formPropuesta = formBuilder.group({
       id_categorias: ['1'],
       id_usuarios: [this.userData.id_usuarios],
@@ -68,6 +74,28 @@ export class AddProposalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let propuestaLocal: any = localStorage.getItem('propuesta-' + this.userData.id_usuarios);
+    if (propuestaLocal) {
+      propuestaLocal = JSON.parse(propuestaLocal);
+      this.formPropuesta.patchValue({
+      id_usuarios: propuestaLocal.id_usuarios,
+      introduccion: propuestaLocal.introduccion,
+      objetivos: propuestaLocal.objetivos,
+      importancia: propuestaLocal.importancia,
+      alineacion: propuestaLocal.alineacion,
+      descripcion: propuestaLocal.descripcion,
+      marco: propuestaLocal.marco,
+      etapas: propuestaLocal.etapas,
+      experiencia: propuestaLocal.experiencia,
+      tipificacion: propuestaLocal.tipificacion,
+      identificacion: propuestaLocal.identificacion,
+      impacto: propuestaLocal.impacto,
+      factibilidad: propuestaLocal.factibilidad,
+      resultados: propuestaLocal.resultados,
+      url: propuestaLocal.url,
+      });
+      this.contadorPalabras();
+    }
   }
 
   registerProposal() {
@@ -80,6 +108,10 @@ export class AddProposalComponent implements OnInit {
             Swal.fire({
               title: 'Su propuesta se registro correctamente',
               icon: 'success',
+            }).then (() => {
+              localStorage.setItem('termino-' + this.userData.id_usuarios, JSON.stringify({termino: true}));
+              this.propuestaTermianda = JSON.parse(localStorage.getItem('termino-' + this.userData.id_usuarios)).termino;
+              window.location.reload();
             });
           } else {
             Swal.fire({
@@ -99,7 +131,7 @@ export class AddProposalComponent implements OnInit {
 
   }
 
-  contadorPalabras(ev: any) {
+  contadorPalabras( _?: any) {
     let texto = this.formPropuesta.value.introduccion
       + ' '
       + this.formPropuesta.value.objetivos
@@ -140,11 +172,11 @@ export class AddProposalComponent implements OnInit {
     }
   }
 
-  showPreviousStep(event?: Event) {
+  showPreviousStep( _ ?: Event) {
     this.ngWizardService.previous();
   }
 
-  showNextStep(event?: Event) {
+  showNextStep( _ ?: Event) {
     this.ngWizardService.next();
   }
 
@@ -153,8 +185,8 @@ export class AddProposalComponent implements OnInit {
     this.ngWizardService.theme(theme);
   }
 
-  stepChanged(args: StepChangedArgs) {
-    console.log(args.step);
+  stepChanged( _ : StepChangedArgs) {
+    localStorage.setItem('propuesta-' + this.userData.id_usuarios,  JSON.stringify(this.formPropuesta.value));
   }
 
 
@@ -164,7 +196,7 @@ export class AddProposalComponent implements OnInit {
 
 
 
-  descargarAcusePDF(form) {
+  descargarAcusePDF() {
     // declaracion pdf
     const documentoPDF1 = new jsPDF('p', 'in', 'letter');
     // campos

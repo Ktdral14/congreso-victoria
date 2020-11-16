@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="codigo-postal">Código postal<span class="requerid-fields">*</span>: </label>
-                        <label *ngIf="!validCP" for="codigo-postal"> <span class="requerid-fields" style="color: red;">-error</span></label>
+                        <label *ngIf="!validCP" for="codigo-postal"> <span class="requerid-fields" style="color: red;">Cp invalido</span></label>
                         <input (keyup)="cambioCP($event)" type="text" placeholder="Código postal" class="form-control" id="cp" required>
                     </div>
                 </div>
