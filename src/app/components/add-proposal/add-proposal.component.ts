@@ -22,18 +22,6 @@ export class AddProposalComponent implements OnInit {
   config: NgWizardConfig = {
     selected: 0,
     theme: THEME.dots,
-    toolbarSettings: {
-      toolbarExtraButtons: [
-        {
-          text: 'Guardar',
-          class: 'btn btn-primary',
-          event: () => {
-            this.registerProposal();
-          }
-        },
-
-      ]
-    }
   };
 
   formPropuesta: FormGroup;
@@ -105,13 +93,13 @@ export class AddProposalComponent implements OnInit {
         .subscribe(data => {
           console.log(data);
           if (!data.error) {
-            this.descargarAcusePDF();
             Swal.fire({
-              title: 'Su propuesta se registro correctamente',
+              title: 'Su propuesta se registro correctamente, se descargara el acuse',
               icon: 'success',
             }).then (() => {
               localStorage.setItem('termino-' + this.userData.id_usuarios, JSON.stringify({termino: true}));
               this.propuestaTermianda = JSON.parse(localStorage.getItem('termino-' + this.userData.id_usuarios)).termino;
+              this.descargarAcusePDF();
               window.location.reload();
             });
           } else {
