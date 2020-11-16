@@ -47,3 +47,15 @@
     color: #fff;
     border-radius: 5px;
 }
+
+.counter {
+    position: fixed;
+    top: 93%;
+    left: 38vh;
+    text-align: center;
+    background-color: #266AA7;
+    color: #fff;
+    height: 30px;
+    width: 200px;
+    z-index: 1000;
+}

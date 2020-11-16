@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from '../../services/register.service';
 import { CodigoPostalService } from '../../services/codigo-postal.service';
-import { CpInfo } from '../../models/cp.model';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -45,6 +44,7 @@ export class RegisterComponent implements OnInit {
   registerUser() {
     this.registerService.registerUser(this.formRegister.value)
       .subscribe( data => {
+        console.log(data);
         if (!data.error) {
           Swal.fire({
             title: 'Se registro con exito',
@@ -65,9 +65,11 @@ export class RegisterComponent implements OnInit {
     this.cpService.consultCP(ev.target.value)
       .subscribe( data => {
         console.log(data);
+        const estado = data[0].response.estado.toString();
+        const ciudad = data[0].response.ciudad.toString();
         this.formRegister.patchValue({
-          estado: [data[0].response.estado],
-          ciudad: [data[0].response.ciudad],
+          estado,
+          ciudad,
         });
         this.validCP = true;
       }, err => {

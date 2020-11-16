@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         } else {
           Swal.fire({
             title: 'Ocurrio un error',
-            text: data.body,
+            text: 'Ocurrio un error al iniciar sesión',
             icon: 'error'
           });
         }

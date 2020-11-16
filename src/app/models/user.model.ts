@@ -1,19 +1,37 @@
+
 export interface UserData {
-    id_usuarios: string;
-    id_autores: string;
-    correo: string;
-    contrasena: string;
-    tk?: any;
-    deleted: string;
-    nombres: string;
-    a_paterno: string;
+    autores: Autores[];
     a_materno: string;
-    sexo: string;
-    fecha_nacimiento: string;
-    estado: string;
+    a_paterno: string;
+    calle: string;
     ciudad: string;
     colonia: string;
-    calle: string;
-    num_int: string;
+    estado: string;
+    fecha_nacimiento: string;
+    id_autores: string;
+    nombres: string;
     num_ext: string;
+    num_int: string;
+    sexo: string;
+    confirmed: string;
+    contrasena: string;
+    correo: string;
+    deleted: string;
+    id_usuarios: string;
+    tk: string;
+}
+
+export interface Autores {
+    a_materno: string;
+    a_paterno: string;
+    calle: string;
+    ciudad: string;
+    colonia: string;
+    estado: string;
+    fecha_nacimiento: string;
+    id_autores: string;
+    nombres: string;
+    num_ext: string;
+    num_int: string;
+    sexo: string;
 }

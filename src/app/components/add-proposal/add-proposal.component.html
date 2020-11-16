@@ -4,6 +4,7 @@
         <div class="div-blue"></div>
         <div class=" mt-3">
             <div class="row">
+                <div class="counter">Palabras: {{palabrasEscritas.length}}</div>
                 <div class="col-2"></div>
                 <div class="col-8">
                     <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
@@ -19,32 +20,32 @@
                                 </div>
                             </div>
 
-                            <form class="mt-3">
+                            <form class="mt-3" [formGroup] ="formPropuesta">
                                 <div class="form-group">
                                     <label for="intro">Introducción: origenes y antecedentes del problema objeto del
                                         proyecto<span class="requerid-fields">*</span>: </label>
-                                    <textarea class="form-control" formControlName="introduccion"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="introduccion"
                                         placeholder="Introducción" id="intro" rows="2" required></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="objetivos">Objetivos: científicos, tecnológicos y en su caso de
                                         innovación<span class="requerid-fields">*</span>: </label>
-                                    <textarea class="form-control" formControlName="objetivos" placeholder="Objetivos"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="objetivos" placeholder="Objetivos"
                                         id="objetivos" rows="2" required></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="Importancia">Importancia y justificación del tema objeto del
                                         proyecto<span class="requerid-fields">*</span>: </label>
-                                    <textarea class="form-control" formControlName="importancia"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="importancia"
                                         placeholder="Importancia y justificación " id="Importancia" rows="2"
                                         required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="Alineación">Alineación al Plan Estatal de Desarrollo 2016-2022<span
                                             class="requerid-fields">*</span>: </label>
-                                    <textarea class="form-control" formControlName="alineacion" placeholder="Alineación"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="alineacion" placeholder="Alineación"
                                         id="Alineación" rows="2" required></textarea>
                                 </div>
                                 <p class="mt-4"> <span class="requerid-fields">*</span> Campos obligatorios</p>
@@ -63,32 +64,32 @@
                                     </div>
                                 </div>
                             </div>
-                            <form class="mt-3">
+                            <form class="mt-3" [formGroup] ="formPropuesta">
                                 <div class="form-group">
                                     <label for="Descripción">Descripción de la propuesta<span
                                             class="requerid-fields">*</span>:
                                     </label>
-                                    <textarea class="form-control" formControlName="descripcion"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="descripcion"
                                         placeholder="Descripción" id="Descripción" rows="2" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="Identificación">Identificación de los nuevos hallazgos<span
                                             class="requerid-fields">*</span>: </label>
-                                    <textarea class="form-control" formControlName="identificacion"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="identificacion"
                                         placeholder="Identificación" id="Identificación" rows="2" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="Marco">Marco metodológico de referencia<span
                                             class="requerid-fields">*</span>:
                                     </label>
-                                    <textarea class="form-control" formControlName="marco"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="marco"
                                         placeholder="Marco metodológico " id="Marco" rows="2" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="Etapas">Etapas y alcances de la propuesta<span
                                             class="requerid-fields">*</span>:
                                     </label>
-                                    <textarea class="form-control" formControlName="etapas"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="etapas"
                                         placeholder="Etapas y alcances " id="Etapas" rows="2" required></textarea>
                                 </div>
                                 <p class="mt-4"> <span class="requerid-fields">*</span> Campos obligatorios</p>
@@ -107,42 +108,42 @@
                                     </div>
                                 </div>
                             </div>
-                            <form class="mt-3">
+                            <form class="mt-3" [formGroup] ="formPropuesta">
                                 <div class="form-group">
                                     <label for="Experiencia">Experiencia científico técnica alcanzada<span
                                             class="requerid-fields">*</span>: </label>
-                                    <textarea class="form-control" formControlName="experiencia"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="experiencia"
                                         placeholder="Experiencia" id="Experiencia" rows="2" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="Tipificación">Tipificación de la vinculación institucional y
                                         organizacional<span class="requerid-fields">*</span>: </label>
-                                    <textarea class="form-control" formControlName="tipificacion"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="tipificacion"
                                         placeholder="Tipificación" id="Tipificación" rows="2" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="Identificación">Identificación del impacto económico y social<span
                                             class="requerid-fields">*</span>: </label>
-                                    <textarea class="form-control" formControlName="impacto"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="impacto"
                                         placeholder="Identificación " id="Identificación" rows="2" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="Factibilidad">Factibilidad económica<span
                                             class="requerid-fields">*</span>: </label>
-                                    <textarea class="form-control" formControlName="factibilidad"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="factibilidad"
                                         placeholder="Factibilidad económica" id="Factibilidad" rows="2"
                                         required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="Resultados">Resultados esperados<span class="requerid-fields">*</span>:
                                     </label>
-                                    <textarea class="form-control" formControlName="resultados"
+                                    <textarea (keyup)="contadorPalabras($event)" class="form-control" formControlName="resultados"
                                         placeholder="Resultados esperados" id="Resultados" rows="2" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="url">URL del vídeo con duración entre tres o cinco minutos <span
                                             class="requerid-fields">*</span>:</label>
-                                    <input type="text" formControlName="url" placeholder="URL" class="form-control"
+                                    <input (keyup)="contadorPalabras($event)" type="text" formControlName="url" placeholder="URL" class="form-control"
                                         id="url" required>
                                 </div>
                                 <p class="mt-4"> <span class="requerid-fields">*</span> Campos obligatorios</p>
