@@ -38,6 +38,7 @@ export class AddProposalComponent implements OnInit {
   userData: UserData;
   palabrasEscritas = [];
   cantidadPalabras = 0;
+  cantidadLimite = false;
   constructor(
     private ngWizardService: NgWizardService,
     private formBuilder: FormBuilder,
@@ -69,11 +70,11 @@ export class AddProposalComponent implements OnInit {
 
   registerProposal() {
     console.log(this.formPropuesta.value);
-    if (this.formPropuesta.valid) {
+    if (this.formPropuesta.valid && !this.cantidadLimite) {
       this.proposalService.registerProposal(this.formPropuesta.value)
       .subscribe( data => {
         console.log(data);
-        if (!data.body) {
+        if (!data.error) {
           Swal.fire({
             title: 'Su propuesta se registro correctamente',
             icon: 'success',
@@ -87,8 +88,9 @@ export class AddProposalComponent implements OnInit {
       }, err => console.log(err));
     } else {
       Swal.fire({
-        title: 'Favor de completar todos los campos',
+        title: 'Advertencia',
         icon: 'info',
+        text: 'Favor de completar todos los campos o verificar el limite de palabras'
       });
     }
   }
@@ -127,6 +129,11 @@ export class AddProposalComponent implements OnInit {
     const listaTemp = texto.split(' ');
     this.palabrasEscritas = listaTemp;
     this.cantidadPalabras = this.palabrasEscritas.length;
+    if (this.cantidadPalabras > 2000) {
+      this.cantidadLimite = true;
+    } else {
+      this.cantidadLimite = false;
+    }
   }
 
   showPreviousStep(event?: Event) {
