@@ -100,7 +100,7 @@ export class AddApplicantsComponent implements OnInit {
         console.log(err);
         this._utilService.loading = false;
       }
-    );
+    ).add(() => this._utilService.loading = false);
   }
 
 

@@ -123,7 +123,7 @@ export class AddProposalComponent implements OnInit {
             });
             this._utilService.loading = false;
           }
-        }, err => console.log(err));
+        }, err => console.log(err)).add(() => this._utilService.loading = false);
     } else {
       Swal.fire({
         title: 'Advertencia',
