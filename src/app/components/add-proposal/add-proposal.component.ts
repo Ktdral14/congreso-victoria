@@ -65,6 +65,15 @@ export class AddProposalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.userData.propuesta === 'No data' && !localStorage.getItem('aspirantes')) {
+      Swal.fire({
+        title: 'Advertencia',
+        icon: 'info',
+        text: 'Primero necesitas registrar los aspirantes'
+      }).then(() => {
+        window.location.reload();
+      });
+    }
     let propuestaLocal: any = localStorage.getItem('propuesta-' + this.userData.id_usuarios);
     if (propuestaLocal) {
       propuestaLocal = JSON.parse(propuestaLocal);

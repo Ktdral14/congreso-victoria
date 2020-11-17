@@ -83,6 +83,7 @@ export class AddApplicantsComponent implements OnInit {
           icon: 'success',
           title: 'Registro exitoso'
         }).then(() => {
+          localStorage.setItem('aspirantes', JSON.stringify(this.formAspirante.value));
           localStorage.setItem('registro-' + this.userData.id_usuarios, JSON.stringify({termino: true}));
           this.registroTerminado = JSON.parse(localStorage.getItem('termino-' + this.userData.id_usuarios)).termino;
           window.location.reload();

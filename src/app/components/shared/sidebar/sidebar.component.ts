@@ -27,7 +27,10 @@ export class SidebarComponent implements OnInit {
   }
 
   cerrar() {
-    localStorage.setItem('session-data', '');
+    localStorage.removeItem('registro-' + JSON.parse(localStorage.getItem('session-data')).id_usuarios);
+    localStorage.removeItem('termino-' + JSON.parse(localStorage.getItem('session-data')).id_usuarios);
+    localStorage.removeItem('session-data');
+    localStorage.removeItem('aspirantes');
     window.location.reload();
   }
 
