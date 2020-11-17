@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
           console.log(data.error);
           this._utilService.loading = false;
         }
-      }, err => console.log(err));
+      }, err => console.log(err)).add(() => this._utilService.loading = false );
 
   }
 
