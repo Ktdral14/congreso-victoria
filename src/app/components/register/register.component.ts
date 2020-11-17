@@ -4,6 +4,9 @@ import { RegisterService } from '../../services/register.service';
 import { CodigoPostalService } from '../../services/codigo-postal.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { UtilsService } from '../../utils/utils.service'
+
+
 
 @Component({
   selector: 'app-register',
@@ -19,7 +22,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
     private cpService: CodigoPostalService,
-    private router: Router
+    private router: Router,
+    private _utilService:UtilsService
   ) {
     this.formRegister = this.formBuilder.group({
     nombres: ['', [Validators.required]],
@@ -42,6 +46,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
+    this._utilService.loading = true;
     this.registerService.registerUser(this.formRegister.value)
       .subscribe( data => {
         console.log(data);
@@ -51,15 +56,17 @@ export class RegisterComponent implements OnInit {
             text: 'Favor de revisar tu correo para confirmarlo',
             icon: 'success'
           }).then ( () => this.router.navigateByUrl('/'));
+          this._utilService.loading = false;
         } else {
           Swal.fire({
             title: 'Ocurrio un error al registrar',
             icon: 'error'
           });
           console.log(data.error);
-          
+          this._utilService.loading = false;
         }
       }, err => console.log(err));
+
   }
 
   cambioCP(ev: any) {

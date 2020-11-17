@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 import { ApplicantsService } from '../../services/applicants.service';
 import swal from 'sweetalert2';
 import { UserData } from 'src/app/models/user.model';
+import { UtilsService } from '../../utils/utils.service'
+
 
 @Component({
   selector: 'app-add-applicants',
@@ -33,7 +35,8 @@ export class AddApplicantsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private applicants: ApplicantsService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private _utilService:UtilsService
   ) {
     this.userData = JSON.parse(localStorage.getItem('session-data'));
     const propuestaData = JSON.parse(localStorage.getItem('registro-' + this.userData.id_usuarios));
@@ -53,6 +56,7 @@ export class AddApplicantsComponent implements OnInit {
   }
 
   onSubmit(files: FileList) {
+    this._utilService.loading = true;
     let archivo = this.carta.nativeElement.files[0];
     let archivo2 = this.c_postulacion.nativeElement.files[0];
     let archivo3 = this.justificacion.nativeElement.files[0];
@@ -84,6 +88,7 @@ export class AddApplicantsComponent implements OnInit {
           window.location.reload();
         });
         console.log(data);
+        this._utilService.loading = false;
       },
       err => {
         swal.fire({
@@ -92,6 +97,7 @@ export class AddApplicantsComponent implements OnInit {
           text: 'Favor de revisar que todos los campos se encuentren llenos y el peso de los archivos sea el'
         });
         console.log(err);
+        this._utilService.loading = false;
       }
     );
   }

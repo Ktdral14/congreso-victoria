@@ -1,6 +1,8 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UtilsService } from './utils/utils.service';
+
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'Premio estatal';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,public _utilService: UtilsService) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('session-data')) {

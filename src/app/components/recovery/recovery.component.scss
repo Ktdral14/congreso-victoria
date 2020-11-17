@@ -11,13 +11,12 @@ img {
 }
 
 .padre {
-    background: url("../../../assets/img/fondo.png");
+    background: url("../../../assets/img/portada-registro.jpg");
     width: 100%;
     height: 100vh;
     background-size: cover;
     position: relative;
-    font-family: 'Poppins', Helvetica, sans-serif;
-    &::before {
+     &::before {
         content: "";
         top: 0;
         left: 0;
@@ -35,14 +34,12 @@ img {
         h5 {
             color: black;
             font-weight: bold;
-            font-family: PoppinsB;
-            font-weight: 500;
+             font-weight: 500;
             text-align: center;
         }
         label {
             color: #555555;
-            font-family: PoppinsB;
-        }
+         }
     }
     %texto {
         text-align: center;
@@ -62,13 +59,11 @@ img {
         border: x solid #eaeaea;
     }
     .text {
-        font-family: Poppins;
-        top: 10px;
+         top: 10px;
         position: relative;
         h3 {
             color: white;
-            font-family: Poppins;
-            font-weight: bold;
+             font-weight: bold;
         }
         p {
             color: white;

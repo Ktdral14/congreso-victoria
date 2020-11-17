@@ -6,6 +6,8 @@ import { UserData } from '../../models/user.model';
 import { ProposalService } from '../../services/proposal.service';
 import Swal from 'sweetalert2';
 import { jsPDF } from "jspdf";
+import { UtilsService } from '../../utils/utils.service'
+
 
 
 
@@ -33,7 +35,8 @@ export class AddProposalComponent implements OnInit {
   constructor(
     private ngWizardService: NgWizardService,
     private formBuilder: FormBuilder,
-    private proposalService: ProposalService
+    private proposalService: ProposalService,
+    private _utilService:UtilsService
   ) {
     this.userData = JSON.parse(localStorage.getItem('session-data'));
     const propuestaData = JSON.parse(localStorage.getItem('termino-' + this.userData.id_usuarios));
@@ -87,6 +90,7 @@ export class AddProposalComponent implements OnInit {
   }
 
   registerProposal() {
+    this._utilService.loading = true;
     console.log(this.formPropuesta.value);
     if (this.formPropuesta.valid && !this.cantidadLimite) {
       this.proposalService.registerProposal(this.formPropuesta.value)
@@ -102,11 +106,13 @@ export class AddProposalComponent implements OnInit {
               this.descargarAcusePDF();
               window.location.reload();
             });
+            this._utilService.loading = false;
           } else {
             Swal.fire({
               title: 'Ocurrio un error al registrar la propuesta',
               icon: 'error',
             });
+            this._utilService.loading = false;
           }
         }, err => console.log(err));
     } else {
@@ -115,9 +121,8 @@ export class AddProposalComponent implements OnInit {
         icon: 'info',
         text: 'Favor de completar todos los campos o verificar el limite de palabras'
       });
+      this._utilService.loading = false;
     }
-
-
   }
 
   contadorPalabras( _?: any) {
