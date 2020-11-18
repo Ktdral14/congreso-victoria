@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import Swal from 'sweetalert2';
-import { UtilsService } from '../../utils/utils.service'
+import { UtilsService } from '../../utils/utils.service';
 
 
 @Component({
@@ -48,8 +48,12 @@ export class LoginComponent implements OnInit {
             text: 'Ocurrio un error al iniciar sesión, la contraseña o el correo son incorrectos',
             icon: 'error'
           });
+          this._utilService.loading = false;
         }
-      }, err => console.log(err));
+      }, err => {
+        console.log(err);
+        this._utilService.loading = false;
+      });
   }
 
 }

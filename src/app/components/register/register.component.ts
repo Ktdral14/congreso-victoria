@@ -70,7 +70,6 @@ export class RegisterComponent implements OnInit {
   }
 
   cambioCP(ev: any) {
-    console.log(ev.target.value);
     this.cpService.consultCP(ev.target.value)
       .subscribe( data => {
         console.log(data);

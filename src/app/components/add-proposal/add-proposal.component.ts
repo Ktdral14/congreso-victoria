@@ -100,7 +100,6 @@ export class AddProposalComponent implements OnInit {
 
   registerProposal() {
     this._utilService.loading = true;
-    console.log(this.formPropuesta.value);
     if (this.formPropuesta.valid && !this.cantidadLimite) {
       this.proposalService.registerProposal(this.formPropuesta.value)
         .subscribe(data => {
