@@ -50,7 +50,10 @@ export class AddApplicantsComponent implements OnInit {
      nombre_propuesta: ['', [Validators.required, Validators.maxLength(30)]],
      p_aspirante: ['', Validators.required],
      s_aspirante: [''],
-     t_aspirante: ['']
+     t_aspirante: [''],
+     p_curp: ['', Validators.required],
+     s_curp: [''],
+     t_curp: ['']
     });
   }
 
@@ -78,6 +81,9 @@ export class AddApplicantsComponent implements OnInit {
     valores.append("c_postulacion", archivo2);
     valores.append("alineacion", archivo3);
     valores.append("propuesta", archivo4);
+    valores.append("p_curp", this.formAspirante.value.p_curp);
+    valores.append("s_curp", this.formAspirante.value.s_curp);
+    valores.append("t_curp", this.formAspirante.value.t_curp);
 
     this.applicants.registroPropuesta(valores).subscribe(
       data => {

@@ -1,5 +1,4 @@
-<div class="desactivar d-flex align-items-center container-fluid justify-content-center"
-    *ngIf="userData.propuesta!='No data' || registroTerminado">
+<div class="desactivar d-flex align-items-center container-fluid justify-content-center" *ngIf="userData.propuesta!='No data' || registroTerminado">
     <img class="ilustracion" src="assets/img/ilustracion1.svg" alt="">
     <h1>Aspirantes registrados</h1>
 </div>
@@ -9,40 +8,54 @@
     <div class="div-blue ml-2"></div>
 </div>
 
-<div class="container align-items-center">  
+<div class="container align-items-center">
     <div class="row">
         <div class="col-3"></div>
 
-         <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="col-lg-6 col-md-12 col-sm-12">
             <form action="" [formGroup]="formAspirante" (submit)="onSubmit($event)">
                 <div class=" datos ">
                     <div class="mt-3 ">
-                        <label for=" ">Nombre y/o título de la propuesta: <span>*</span></label>
+                        <label for=" ">Nombre y/o título de la propuesta <span>*</span></label>
                     </div>
                     <div>
-                        <input type="text " name=" " formControlName="nombre_propuesta" id=" " class="form-control "
-                            placeholder="Ingrese el nombre " />
+                        <input type="text " name=" " formControlName="nombre_propuesta" id=" " class="form-control " placeholder="Ingrese el nombre " />
                     </div>
                     <div class="mt-3 ">
-                        <label for=" ">Nombre completo del primer aspirante: <span>*</span></label>
+                        <label for=" ">Nombre completo del primer aspirante <span>*</span></label>
                     </div>
                     <div>
-                        <input type="text " name=" " formControlName="p_aspirante" id=" " class="form-control "
-                            placeholder="Nombre completo " />
+                        <input type="text " name=" " formControlName="p_aspirante" id=" " class="form-control " placeholder="Nombre completo " />
                     </div>
                     <div class="mt-3 ">
-                        <label for=" ">Nombre completo del segundo aspirante: </label>
+                        <label for=" ">CURP del primer aspirante <span>*</span></label>
                     </div>
                     <div>
-                        <input type="text " name=" " formControlName="s_aspirante" class="form-control " id=" "
-                            placeholder="Nombre completo segundo aspirante " />
+                        <input type="text" name=" " formControlName="p_curp" id=" " class="form-control " placeholder="CURP" />
                     </div>
                     <div class="mt-3 ">
-                        <label for=" ">Nombre completo del tercer aspirante: </label>
+                        <label for=" ">Nombre completo del segundo aspirante</label>
                     </div>
                     <div>
-                        <input class="form-control " formControlName="t_aspirante" type="text " name=" " id=" "
-                            placeholder="Nombre completo tercer aspirante " />
+                        <input type="text " name=" " formControlName="s_aspirante" class="form-control " id=" " placeholder="Nombre completo segundo aspirante " />
+                    </div>
+                    <div class="mt-3 ">
+                        <label for=" ">CURP del segundo aspirante</label>
+                    </div>
+                    <div>
+                        <input type="text" name=" " formControlName="s_curp" id=" " class="form-control " placeholder="CURP" />
+                    </div>
+                    <div class="mt-3 ">
+                        <label for=" ">Nombre completo del tercer aspirante</label>
+                    </div>
+                    <div>
+                        <input class="form-control " formControlName="t_aspirante" type="text " name=" " id=" " placeholder="Nombre completo tercer aspirante " />
+                    </div>
+                    <div class="mt-3 ">
+                        <label for=" ">CURP del tercer aspirante</label>
+                    </div>
+                    <div>
+                        <input type="text" name=" " formControlName="t_curp" id=" " class="form-control " placeholder="CURP" />
                     </div>
                 </div>
             </form>
@@ -79,9 +92,8 @@
                     </div>
                 </div>
             </form>
- 
-    </div>
-  
+
+        </div>
+
         <div class="col-3"></div>
     </div>
-   
