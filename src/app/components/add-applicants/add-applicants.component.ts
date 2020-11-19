@@ -4,6 +4,7 @@ import { ApplicantsService } from '../../services/applicants.service';
 import swal from 'sweetalert2';
 import { UserData } from 'src/app/models/user.model';
 import { UtilsService } from '../../utils/utils.service'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -36,7 +37,8 @@ export class AddApplicantsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private applicants: ApplicantsService,
     private cd: ChangeDetectorRef,
-    private _utilService:UtilsService
+    private _utilService:UtilsService,
+    private router: Router
   ) {
     this.userData = JSON.parse(localStorage.getItem('session-data'));
     const propuestaData = JSON.parse(localStorage.getItem('registro-' + this.userData.id_usuarios));
@@ -86,7 +88,7 @@ export class AddApplicantsComponent implements OnInit {
           localStorage.setItem('aspirantes', JSON.stringify(this.formAspirante.value));
           localStorage.setItem('registro-' + this.userData.id_usuarios, JSON.stringify({termino: true}));
           this.registroTerminado = JSON.parse(localStorage.getItem('termino-' + this.userData.id_usuarios)).termino;
-          window.location.reload();
+          this.router.navigateByUrl('/home/add-proposal');
         });
         console.log(data);
         this._utilService.loading = false;
