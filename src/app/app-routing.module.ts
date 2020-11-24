@@ -7,6 +7,9 @@ import { RecoveryComponent } from './components/recovery/recovery.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { JudgesProyectsComponent } from './components/judges-proyects/judges-proyects.component';
+import { CalificationsComponent } from './components/califications/califications.component';
+import { JudgesComponent } from './components/judges/judges.component';
+import { InitComponent } from './components/init/init.component';
 
 
 
@@ -37,6 +40,18 @@ const ruta: Routes = [
       {
         path: 'judges-proyects',
         component: JudgesProyectsComponent
+      },
+      {
+        path: 'judges',
+        component: JudgesComponent
+      },
+      {
+        path: 'califications',
+        component: CalificationsComponent
+      },
+      {
+        path: 'init',
+        component: InitComponent
       }
 
     ]

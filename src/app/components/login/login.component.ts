@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private _utilService:UtilsService
   ) {
     this.formSignIn = this.formBuilder.group({
-      correo: ['', [Validators.required, Validators.email]],
+      correo: ['', [Validators.required]],
       contrasena: ['', [Validators.required]]
     });
   }
@@ -40,7 +40,11 @@ export class LoginComponent implements OnInit {
         console.log(data);
         if (!data.error) {
           localStorage.setItem('session-data', JSON.stringify(data.body));
-          this.router.navigateByUrl('/home/add-applicants');
+          if (data.body.rol === 'admin' || data.body.rol === 'juez') {
+            this.router.navigateByUrl('/home/init');
+          } else {
+            this.router.navigateByUrl('/home/add-applicants');
+          }
           this._utilService.loading = false;
         } else {
           Swal.fire({

@@ -14,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 import { JudgesProyectsComponent } from './components/judges-proyects/judges-proyects.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { JudgesComponent } from './components/judges/judges.component';
+import { CalificationsComponent } from './components/califications/califications.component';
+import { InitComponent } from './components/init/init.component';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.dots
@@ -30,6 +33,9 @@ const ngWizardConfig: NgWizardConfig = {
     AddProposalComponent,
     AddApplicantsComponent,
     JudgesProyectsComponent,
+    JudgesComponent,
+    CalificationsComponent,
+    InitComponent,
   ],
   imports: [
     BrowserModule,
