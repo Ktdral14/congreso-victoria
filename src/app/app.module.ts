@@ -12,6 +12,8 @@ import { AddProposalComponent } from './components/add-proposal/add-proposal.com
 import { AddApplicantsComponent } from './components/add-applicants/add-applicants.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+import { JudgesProyectsComponent } from './components/judges-proyects/judges-proyects.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.dots
@@ -27,6 +29,7 @@ const ngWizardConfig: NgWizardConfig = {
     SidebarComponent,
     AddProposalComponent,
     AddApplicantsComponent,
+    JudgesProyectsComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ const ngWizardConfig: NgWizardConfig = {
     FormsModule,
     ReactiveFormsModule,
     NgWizardModule.forRoot(ngWizardConfig),
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

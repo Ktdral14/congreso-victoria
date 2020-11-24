@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { JudgesProyectsComponent } from './components/judges-proyects/judges-proyects.component';
 
 
 
@@ -33,6 +34,10 @@ const ruta: Routes = [
         path: 'add-applicants',
         component: AddApplicantsComponent
       },
+      {
+        path: 'judges-proyects',
+        component: JudgesProyectsComponent
+      }
 
     ]
   }
