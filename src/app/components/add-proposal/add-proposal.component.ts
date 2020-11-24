@@ -423,15 +423,16 @@ export class AddProposalComponent implements OnInit {
 
 
     // Parte 1
-    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 0.70, 0.25, 1, 0.75);
-    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 6.5, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
-    documentoPDF1.text('Premio estatal de innovación', 4.1, 0.7, { align: "center" });
+    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 0.90, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-congreso.jpg', 'png', 5.8, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 7.1, 0.25, 1, 0.65).setFontSize(14).setTextColor('#707070');
+    documentoPDF1.text('Premio Estatal de la Innovación', 4.1, 0.7, { align: "center" });
 
     documentoPDF1.text('Registro de la Propuesta', 0.7, 1.8).setFontSize(12).setTextColor("#A8A8A9");
     documentoPDF1.text('', 0.7, 1.9).setFontSize(12);
     documentoPDF1.text('Acuse', 0.7, 1.5);
     documentoPDF1.text('', 0.7, 1.5).setFontSize(12).setTextColor("#707070");
-    documentoPDF1.text(nomPropuesta, 0.7, 2).setFontSize(12).setTextColor("#707070");
+    documentoPDF1.text('Nombre de la propuesta: ' + nomPropuesta, 0.7, 2).setFontSize(12).setTextColor("#707070");
     documentoPDF1.text(primerAspirante, 0.7, 2.2).setFontSize(12).setTextColor("#707070");
     documentoPDF1.text(segundoAspirante, 0.7, 2.4).setFontSize(12).setTextColor("#707070");
     documentoPDF1.text(tercerAspirante, 0.7, 2.6);
@@ -469,9 +470,10 @@ export class AddProposalComponent implements OnInit {
 
     documentoPDF1.addPage();
 
-    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 0.70, 0.25, 1, 0.75);
-    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 6.5, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
-    documentoPDF1.text('Premio estatal de innovación', 4.1, 0.7, { align: "center" });
+    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 0.90, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-congreso.jpg', 'png', 5.8, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 7.1, 0.25, 1, 0.65).setFontSize(14).setTextColor('#707070');
+    documentoPDF1.text('Premio Estatal de la Innovación', 4.1, 0.7, { align: "center" });
 
     documentoPDF1.text('Registro de la Propuesta', 0.7, 1.8).setFontSize(12).setTextColor("#A8A8A9");
     documentoPDF1.text('', 0.7, 1.9).setFontSize(12);
@@ -513,9 +515,10 @@ export class AddProposalComponent implements OnInit {
     // parte 2
     documentoPDF1.addPage();
 
-    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 0.70, 0.25, 1, 0.75);
-    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 6.5, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
-    documentoPDF1.text('Premio estatal de innovación', 4.1, 0.7, { align: "center" });
+    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 0.90, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-congreso.jpg', 'png', 5.8, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 7.1, 0.25, 1, 0.65).setFontSize(14).setTextColor('#707070');
+    documentoPDF1.text('Premio Estatal de la Innovación', 4.1, 0.7, { align: "center" });
 
     documentoPDF1.text('Registro de la Propuesta', 0.7, 1.8).setFontSize(12).setTextColor("#A8A8A9");
     documentoPDF1.text('', 0.7, 1.9).setFontSize(12);
@@ -555,9 +558,10 @@ export class AddProposalComponent implements OnInit {
 
     documentoPDF1.addPage();
 
-    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 0.70, 0.25, 1, 0.75);
-    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 6.5, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
-    documentoPDF1.text('Premio estatal de innovación', 4.1, 0.7, { align: "center" });
+    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 0.90, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-congreso.jpg', 'png', 5.8, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 7.1, 0.25, 1, 0.65).setFontSize(14).setTextColor('#707070');
+    documentoPDF1.text('Premio Estatal de la Innovación', 4.1, 0.7, { align: "center" });
 
     documentoPDF1.text('Registro de la Propuesta', 0.7, 1.8).setFontSize(12).setTextColor("#A8A8A9");
     documentoPDF1.text('', 0.7, 1.9).setFontSize(12);
@@ -598,9 +602,10 @@ export class AddProposalComponent implements OnInit {
     // parte 3
     documentoPDF1.addPage();
 
-    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 0.70, 0.25, 1, 0.75);
-    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 6.5, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
-    documentoPDF1.text('Premio estatal de innovación', 4.1, 0.7, { align: "center" });
+    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 0.90, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-congreso.jpg', 'png', 5.8, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 7.1, 0.25, 1, 0.65).setFontSize(14).setTextColor('#707070');
+    documentoPDF1.text('Premio Estatal de la Innovación', 4.1, 0.7, { align: "center" });
 
     documentoPDF1.text('Registro de la Propuesta', 0.7, 1.8).setFontSize(12).setTextColor("#A8A8A9");
     documentoPDF1.text('', 0.7, 1.9).setFontSize(12);
@@ -640,9 +645,10 @@ export class AddProposalComponent implements OnInit {
 
     documentoPDF1.addPage();
 
-    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 0.70, 0.25, 1, 0.75);
-    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 6.5, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
-    documentoPDF1.text('Premio estatal de innovación', 4.1, 0.7, { align: "center" });
+    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 0.90, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-congreso.jpg', 'png', 5.8, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 7.1, 0.25, 1, 0.65).setFontSize(14).setTextColor('#707070');
+    documentoPDF1.text('Premio Estatal de la Innovación', 4.1, 0.7, { align: "center" });
 
     documentoPDF1.text('Registro de la Propuesta', 0.7, 1.8).setFontSize(12).setTextColor("#A8A8A9");
     documentoPDF1.text('', 0.7, 1.9).setFontSize(12);
@@ -682,9 +688,10 @@ export class AddProposalComponent implements OnInit {
 
     documentoPDF1.addPage();
 
-    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 0.70, 0.25, 1, 0.75);
-    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 6.5, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
-    documentoPDF1.text('Premio estatal de innovación', 4.1, 0.7, { align: "center" });
+    documentoPDF1.addImage('assets/img/logo-cotacyt.png', 'png', 0.90, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-congreso.jpg', 'png', 5.8, 0.35, 1.2, 0.5).setFont('Helvetica').setFontSize(18).setTextColor('#707070');
+    documentoPDF1.addImage('assets/img/logo-tam-color.png', 'png', 7.1, 0.25, 1, 0.65).setFontSize(14).setTextColor('#707070');
+    documentoPDF1.text('Premio Estatal de la Innovación', 4.1, 0.7, { align: "center" });
 
     documentoPDF1.text('Registro de la Propuesta', 0.7, 1.8).setFontSize(12).setTextColor("#A8A8A9");
     documentoPDF1.text('', 0.7, 1.9).setFontSize(12);
