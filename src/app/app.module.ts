@@ -17,6 +17,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { JudgesComponent } from './components/judges/judges.component';
 import { CalificationsComponent } from './components/califications/califications.component';
 import { InitComponent } from './components/init/init.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.dots
@@ -42,6 +43,7 @@ const ngWizardConfig: NgWizardConfig = {
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SweetAlert2Module.forRoot(),
     NgWizardModule.forRoot(ngWizardConfig),
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot()

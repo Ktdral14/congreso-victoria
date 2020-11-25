@@ -1,1 +1,39 @@
-<p>init works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <button class="btn-project-list btn btn-block mb-1" (click)="mostrarProyectosPorCalificacion($event)">
+            Mostrar proyectos por calificación
+        </button>
+        </div>
+        <div class="col-6"></div>
+    </div>
+</div>
+
+
+
+<swal class="swal-wide" #swalid title="Calificaciones de los proyectos" [swalOptions]="{customClass: 'clase'}">
+    <div *swalPortal>
+
+        <div>
+            <div class="row justify-content-center">
+                <table class="table table-lg table-hover">
+                    <thead class="background-table-projects">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Calificación</th>
+                        </tr>
+                    </thead>
+                    <tr class="table" *ngFor="let proyectos of proyectosCalificacion; let i = index">
+                        <td>
+                            <div class="row">
+                                <span class="badge badge-position mr-3"> {{i+1}} </span> {{proyectos.nombre}}
+                            </div>
+                        </td>
+                        <td>{{proyectos.calificacion | number: '1.0-0'}}</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</swal>
