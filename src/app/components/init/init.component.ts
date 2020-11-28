@@ -32,7 +32,7 @@ export class InitComponent implements OnInit {
       asignedProyects: this.proyectoService.selectAllAsignedProyects(),
       registredProyects: this.proyectoService.selectAllRegistredProyects(),
       proyectosAllTop: this.proyectoService.getProjectsAllTop()
-    }).subscribe ( data => {
+    }).subscribe(data => {
       this.proyectosCalificacion = data.proyectosAllTop.body;
       this.asignedProyects = data.asignedProyects.body;
       this.registredProyects = data.registredProyects.body;
@@ -49,21 +49,55 @@ export class InitComponent implements OnInit {
   }
 
   saveAsPdf() {
+    let y = 3;
     console.log(this.proyectosCalificacion.length);
     console.log(this.proyectosCalificacion);
 
     const doc = new jsPDF('p', 'in', 'letter');
-    doc.addImage('../assets/img/logo-cotacyt.png', 'png', 0.6, 0.5, 1.3, 0.5).setFontSize(14.5).setTextColor('#707070');
-    doc.text('Premio Estatal de la Innovación', 2.3, 0.85);
+    doc.addImage('../assets/img/logo-cotacyt.png', 'png', 0.6, 0.5, 1.3, 0.5).setFontSize(16).setTextColor('#707070');
+    doc.text('Premio Estatal de la Innovación', 4.2, 1.6, { align: 'center' });
     doc.addImage('../assets/img/logo-congreso.jpg', 'jpg', 5.3, 0.5, 1.3, 0.6);
-    doc.addImage('../assets/img/logo-tam-color.png', 'png', 6.7, 0.4, 1.2, 0.75);
+    doc.addImage('../assets/img/logo-tam-color.png', 'png', 6.7, 0.4, 1.2, 0.75).setFontSize(13);
 
-    doc.text('Proyecto', 1, 2.5);
-    doc.text('Calificación', 6, 2.5);
+    doc.text('Proyecto', 1, 2.5).setFontSize(13);
+    doc.text('Calificación', 6.3, 2.5).setFontSize(12);
+    for (let j = 0; j < this.proyectosCalificacion.length; j++) {
+      if (j > 25) {
+        let y = 3;
+        doc.addPage();
+        doc.addImage('../assets/img/logo-cotacyt.png', 'png', 0.6, 0.5, 1.3, 0.5).setFontSize(16).setTextColor('#707070');
+        doc.text('Premio Estatal de la Innovación', 4.2, 1.6, { align: 'center' });
+        doc.addImage('../assets/img/logo-congreso.jpg', 'jpg', 5.3, 0.5, 1.3, 0.6);
+        doc.addImage('../assets/img/logo-tam-color.png', 'png', 6.7, 0.4, 1.2, 0.75).setFontSize(13);
 
-    doc.text(this.proyectosCalificacion[0].nombre, 1, 3);
-    doc.text((parseInt( this.proyectosCalificacion[0].calificacion).toFixed(2)).toString(), 6.2, 3);
+        doc.text('Proyecto', 1, 2.5).setFontSize(13);
+        doc.text('Calificación', 6.3, 2.5).setFontSize(12);
+        for (let j = 0; j < this.proyectosCalificacion.length; j++) {
+          doc.text(this.proyectosCalificacion[j].nombre, 1, y).setFontSize(12);
+          doc.text((parseInt(this.proyectosCalificacion[j].calificacion).toFixed(2)).toString(), 6.5, y);
+          y += 0.23;
+        }
+        if (j > 50) {
+          let y = 3;
+          doc.addPage();
+          doc.addImage('../assets/img/logo-cotacyt.png', 'png', 0.6, 0.5, 1.3, 0.5).setFontSize(16).setTextColor('#707070');
+          doc.text('Premio Estatal de la Innovación', 4.2, 1.6, { align: 'center' });
+          doc.addImage('../assets/img/logo-congreso.jpg', 'jpg', 5.3, 0.5, 1.3, 0.6);
+          doc.addImage('../assets/img/logo-tam-color.png', 'png', 6.7, 0.4, 1.2, 0.75).setFontSize(13);
 
+          doc.text('Proyecto', 1, 2.5).setFontSize(13);
+          doc.text('Calificación', 6.3, 2.5).setFontSize(12);
+          for (let j = 0; j < this.proyectosCalificacion.length; j++) {
+            doc.text(this.proyectosCalificacion[j].nombre, 1, y).setFontSize(12);
+            doc.text((parseInt(this.proyectosCalificacion[j].calificacion).toFixed(2)).toString(), 6.5, y);
+            y += 0.23;
+          }
+        }
+      }
+      doc.text(this.proyectosCalificacion[j].nombre, 1, y).setFontSize(12);
+      doc.text((parseInt(this.proyectosCalificacion[j].calificacion).toFixed(2)).toString(), 6.5, y);
+      y += 0.23;
+    }
     doc.save('lista de proyectos');
 
   }
