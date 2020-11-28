@@ -62,7 +62,7 @@ export class InitComponent implements OnInit {
     doc.text('Proyecto', 1, 2.5).setFontSize(13);
     doc.text('Calificación', 6.3, 2.5).setFontSize(12);
     for (let j = 0; j < this.proyectosCalificacion.length; j++) {
-      if (j > 25) {
+      if (j > 25 && j <= 50) {
         let y = 3;
         doc.addPage();
         doc.addImage('../assets/img/logo-cotacyt.png', 'png', 0.6, 0.5, 1.3, 0.5).setFontSize(16).setTextColor('#707070');
@@ -77,7 +77,8 @@ export class InitComponent implements OnInit {
           doc.text((parseInt(this.proyectosCalificacion[j].calificacion).toFixed(2)).toString(), 6.5, y);
           y += 0.23;
         }
-        if (j > 50) {
+      } else
+        if (j > 50 && j <= 75) {
           let y = 3;
           doc.addPage();
           doc.addImage('../assets/img/logo-cotacyt.png', 'png', 0.6, 0.5, 1.3, 0.5).setFontSize(16).setTextColor('#707070');
@@ -93,7 +94,7 @@ export class InitComponent implements OnInit {
             y += 0.23;
           }
         }
-      }
+      
       doc.text(this.proyectosCalificacion[j].nombre, 1, y).setFontSize(12);
       doc.text((parseInt(this.proyectosCalificacion[j].calificacion).toFixed(2)).toString(), 6.5, y);
       y += 0.23;
