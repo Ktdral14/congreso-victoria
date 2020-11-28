@@ -18,3 +18,19 @@ export interface BodyJudgesMultiselect {
     id_jueces: string;
     nombre: string;
 }
+export interface JudgeSelectAll {
+    error: boolean;
+    status: number;
+    body: JudgeSelectAllBody[];
+}
+
+export interface JudgeSelectAllBody {
+    id_jueces: string;
+    id_categorias: string;
+    usuario: string;
+    contrasena: string;
+    nombre: string;
+    rol: string;
+    finished: string;
+    deleted: string;
+}

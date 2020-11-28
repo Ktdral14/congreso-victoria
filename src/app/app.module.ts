@@ -45,6 +45,7 @@ const ngWizardConfig: NgWizardConfig = {
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SweetAlert2Module.forRoot(),
     NgWizardModule.forRoot(ngWizardConfig),
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot(),

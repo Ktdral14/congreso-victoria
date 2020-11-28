@@ -16,10 +16,11 @@
                 <p><span>Inicio</span></p>
             </div>
             <li class="item">
+                <a *ngIf="isAAdmin" [routerLink]="['init']" routerLinkActive="active" class="menu-btn">
+                    <i class="fas fa-home"></i><span> Inicio <i class="fas fa-chevron-right drop-down"></i></span>
 
-                <a [routerLink]="['projects']" routerLinkActive="active" class="menu-btn">
-                    <i class="fas fa-home"></i><span> Proyectos <i
-                            class="fas fa-chevron-right drop-down"></i></span>
+                <a *ngIf="isAJudge" [routerLink]="['projects']" routerLinkActive="active" class="menu-btn">
+                    <i class="fas fa-home"></i><span> Proyectos <i class="fas fa-chevron-right drop-down"></i></span>
                 </a>
                 <a *ngIf="!isAAdmin && !isAJudge" [routerLink]="['add-applicants']" routerLinkActive="active" class="menu-btn">
                     <i class="fas fa-users"></i><span> Registro <i
@@ -42,10 +43,10 @@
                             class="fas fa-chevron-right drop-down"></i></span>
                 </a>
 
-                <a *ngIf="isAAdmin" [routerLink]="['califications']" routerLinkActive="active" class="menu-btn">
+                <!-- <a *ngIf="isAAdmin" [routerLink]="['califications']" routerLinkActive="active" class="menu-btn">
                     <i class="far fa-file-alt"></i><span> Calificaciones <i
                             class="fas fa-chevron-right drop-down"></i></span>
-                </a>
+                </a> -->
 
 
                 <a [routerLink]="['']" class="menu-btn" style="cursor: pointer;" (click)="cerrar()">

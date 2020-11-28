@@ -1,1 +1,107 @@
-<p>init works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="title-page">Informacion sobre los proyectos</h1>
+            <div class="div-blue"></div>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-8 mt-4">
+            <button class="btn-project-list btn btn-block mb-1" (click)="mostrarProyectosPorCalificacion($event)">
+                Mostrar proyectos por calificación
+            </button>
+        </div>
+        <div class="col-6 mt-3">
+            <div class="card mb-3">
+                <div class="card-header background-table">
+                    <div class="row">
+                        <div class="col-11">
+                            <h6 class="m-0">Proyectos Registrados</h6>
+                        </div>
+                        <div class="col-1">
+                            <span class="text-right" *ngIf="registredProyects">{{registredProyects.length}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="qualified-all-projects card-body p-0">
+                    <table class="table table-hover">
+                        <thead class="thead-ligth">
+                            <tr>
+                                <th scope="col">Nombre del proyecto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let registredProyect of registredProyects">
+                                <td>
+                                    {{registredProyect.nombre_propuesta}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 mt-3">
+            <div class="card mb-3">
+                <div class="card-header background-table">
+                    <div class="row">
+                        <div class="col-11">
+                            <h6 class="m-0">Proyectos Asignados</h6>
+                        </div>
+                        <div class="col-1">
+                            <span class="text-right" *ngIf="asignedProyects">{{asignedProyects.length}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="qualified-all-projects card-body p-0">
+                    <table class="table table-hover">
+                        <thead class="thead-ligth">
+                            <tr>
+                                <th scope="col">Nombre del proyecto</th>
+                                <th scope="col" class="text-center">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let asignedProyect of asignedProyects">
+                                <td>
+                                    {{asignedProyect.nombre_propuesta}}
+                                </td>
+                                <td>
+                                    <div *ngIf="asignedProyect.terminado == 'No'" class="custom-btn-danger text-center">Sin calificar
+                                    </div>
+                                    <div *ngIf="asignedProyect.terminado == 'Si'" class="custom-btn-success text-center">Calificado</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<swal class="swal-wide" #swalid title="Calificaciones de los proyectos" [swalOptions]="{customClass: 'clase'}">
+    <div *swalPortal>
+        <div>
+            <div class="row justify-content-center">
+                <table class="table table-lg table-hover">
+                    <thead class="background-table-projects">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Calificación</th>
+                        </tr>
+                    </thead>
+                    <tr class="table" *ngFor="let proyectos of proyectosCalificacion; let i = index">
+                        <td>
+                            <div class="row">
+                                <span class="badge badge-position mr-3"> {{i+1}} </span> {{proyectos.nombre}}
+                            </div>
+                        </td>
+                        <td>{{proyectos.calificacion | number: '1.0-0'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</swal>

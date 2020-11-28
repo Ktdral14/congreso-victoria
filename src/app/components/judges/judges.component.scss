@@ -1,0 +1,24 @@
+.title-page{
+    color: #266AA7;
+}
+.div-blue{
+    width: 100%;
+    height: 2px;
+    background: #266AA7;
+}
+.btn-edit{
+    background: #0064A7;
+    color: #fff;
+}
+.scroll-cus{
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+.scroll-cus::-webkit-scrollbar{
+    width: 10px;
+}
+.scroll-cus::-webkit-scrollbar-thumb{
+    background:#0064A7;
+    border-radius: 5px;
+}
