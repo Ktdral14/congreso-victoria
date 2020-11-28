@@ -12,6 +12,7 @@ import { AddProposalComponent } from './components/add-proposal/add-proposal.com
 import { AddApplicantsComponent } from './components/add-applicants/add-applicants.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+import { ProjectsComponent } from './components/projects/projects.component';
 import { JudgesProyectsComponent } from './components/judges-proyects/judges-proyects.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { JudgesComponent } from './components/judges/judges.component';
@@ -33,6 +34,7 @@ const ngWizardConfig: NgWizardConfig = {
     SidebarComponent,
     AddProposalComponent,
     AddApplicantsComponent,
+    ProjectsComponent,
     JudgesProyectsComponent,
     JudgesComponent,
     CalificationsComponent,
@@ -46,7 +48,8 @@ const ngWizardConfig: NgWizardConfig = {
     SweetAlert2Module.forRoot(),
     NgWizardModule.forRoot(ngWizardConfig),
     HttpClientModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    SweetAlert2Module.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

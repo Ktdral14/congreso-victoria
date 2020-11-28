@@ -41,6 +41,7 @@ export class SidebarComponent implements OnInit {
     localStorage.removeItem('termino-' + JSON.parse(localStorage.getItem('session-data')).id_usuarios);
     localStorage.removeItem('session-data');
     localStorage.removeItem('aspirantes');
+    localStorage.removeItem('terminoEvaluacion');
     window.location.reload();
   }
 

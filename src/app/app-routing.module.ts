@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 import { JudgesProyectsComponent } from './components/judges-proyects/judges-proyects.component';
 import { CalificationsComponent } from './components/califications/califications.component';
 import { JudgesComponent } from './components/judges/judges.component';
@@ -29,6 +30,10 @@ const ruta: Routes = [
 
   {
     path: 'home', component: SidebarComponent, children: [
+      {
+        path: 'projects',
+        component: ProjectsComponent
+      },
       {
         path: 'add-proposal',
         component: AddProposalComponent
