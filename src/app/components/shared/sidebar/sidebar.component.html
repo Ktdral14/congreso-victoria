@@ -16,7 +16,7 @@
                 <p><span>Inicio</span></p>
             </div>
             <li class="item">
-                <a *ngIf="isAAdmin || isAJudge" [routerLink]="['init']" routerLinkActive="active" class="menu-btn">
+                <a *ngIf="isAAdmin" [routerLink]="['init']" routerLinkActive="active" class="menu-btn">
                     <i class="fas fa-home"></i><span> Inicio <i
                             class="fas fa-chevron-right drop-down"></i></span>
                 </a>
@@ -40,10 +40,10 @@
                             class="fas fa-chevron-right drop-down"></i></span>
                 </a>
 
-                <a *ngIf="isAAdmin" [routerLink]="['califications']" routerLinkActive="active" class="menu-btn">
+                <!-- <a *ngIf="isAAdmin" [routerLink]="['califications']" routerLinkActive="active" class="menu-btn">
                     <i class="far fa-file-alt"></i><span> Calificaciones <i
                             class="fas fa-chevron-right drop-down"></i></span>
-                </a>
+                </a> -->
 
 
                 <a [routerLink]="['']" class="menu-btn" style="cursor: pointer;" (click)="cerrar()">

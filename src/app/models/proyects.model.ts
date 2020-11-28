@@ -17,3 +17,24 @@ export interface ProyectosCalificacion {
     calificacion: string;
     autores: any;
 }
+export interface RegistredProyects {
+    error: boolean;
+    status: number;
+    body: RegistredProyectsBody[];
+}
+
+export interface RegistredProyectsBody {
+    nombre_propuesta: string;
+}
+
+export interface AsignedProyects {
+    error: boolean;
+    status: number;
+    body: AsignedProyectsBody[];
+}
+
+export interface AsignedProyectsBody {
+    id_proyectos: string;
+    nombre_propuesta: string;
+    terminado: string;
+}

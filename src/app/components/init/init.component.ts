@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { ProyectsService } from '../../services/proyects.service';
-import { ProyectosCalificacion } from '../../models/proyects.model';
+import { AsignedProyectsBody, RegistredProyectsBody } from '../../models/proyects.model';
 import jsPDF from 'jspdf';
+import { forkJoin } from 'rxjs';
+import { UtilsService } from '../../utils/utils.service';
 
 @Component({
   selector: 'app-init',
@@ -15,23 +17,28 @@ export class InitComponent implements OnInit {
 
   proyectosCalificacion;
 
+  asignedProyects: AsignedProyectsBody[];
+  registredProyects: RegistredProyectsBody[];
   constructor(
-    private proyectoService: ProyectsService
+    private proyectoService: ProyectsService,
+    private utilService: UtilsService
   ) {
     this.proyectosCalificacion = new Array<any>();
-   }
+  }
 
   ngOnInit(): void {
-    this.proyectoService.getProjectsAllTop().subscribe(
-      data => {
-        this.proyectosCalificacion = data.body;
-        console.log(data);
-      },
-      err => {
-        console.log(err);
-      }
-    );
+    this.utilService._loading = true;
+    forkJoin({
+      asignedProyects: this.proyectoService.selectAllAsignedProyects(),
+      registredProyects: this.proyectoService.selectAllRegistredProyects(),
+      proyectosAllTop: this.proyectoService.getProjectsAllTop()
+    }).subscribe ( data => {
+      this.proyectosCalificacion = data.proyectosAllTop.body;
+      this.asignedProyects = data.asignedProyects.body;
+      this.registredProyects = data.registredProyects.body;
+    }, err => console.log(err)).add(() => this.utilService._loading = false);
   }
+
   mostrarProyectosPorCalificacion(evt: any) {
     this.swalCalificaciones.fire().then(
       res => {
