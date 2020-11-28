@@ -258,6 +258,7 @@ export class ProjectsComponent implements OnInit {
                   icon: 'success'
                 });
                 this.generarForm();
+                this.valores = null;
               } else {
                 Swal.fire({
                   title: 'Error al calificar',
@@ -309,6 +310,7 @@ export class ProjectsComponent implements OnInit {
                   title: 'Calificacion actualizada',
                   icon: 'success'
                 });
+                this.valores = null;
               } else{
                 Swal.fire({
                   title: 'Error al actualizar la calificacion',

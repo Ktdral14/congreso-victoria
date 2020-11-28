@@ -30,10 +30,10 @@
                             <tr class="d-flex justify-content-center align-content-center">
                                 <td>{{proyecto.nombre_propuesta}}</td>
                                 <td>
-                                    <button class="btn btn-success mr-1" (click)="descargarAcusePDF(proyecto)">PDFG</button>
-                                    <button class="btn btn-success mr-1" (click)="abrirPDFExt(proyecto.propuesta)">PDFExt</button>
-                                    <button class="btn btn-success mr-1" (click)="abrirVideo(proyecto.url)">Video</button>
-                                    <button class="btn btn-success" (click)="setProyectoActual(proyecto)" data-toggle="collapse" data-target="#collapseCalificar" aria-expanded="false" aria-controls="collapseCalificar">Calificar</button>
+                                    <button class="btn btn-success ml-5" (click)="descargarAcusePDF(proyecto)"><span><i class="fas fa-file-pdf"></i></span></button>
+                                    <button class="btn btn-success ml-4" (click)="abrirPDFExt(proyecto.propuesta)">PDF Extenso</button>
+                                    <button class="btn btn-success ml-4" id="video" (click)="abrirVideo(proyecto.url)"><span><i class="fab fa-youtube"></i></span></button>
+                                    <button class="btn btn-success ml-4"  (click)="setProyectoActual(proyecto)" data-toggle="collapse" data-target="#collapseCalificar" aria-expanded="false" aria-controls="collapseCalificar"><span><i class="fas fa-edit"></i></span></button>
                                 </td>
                             </tr>
                         </tbody>
