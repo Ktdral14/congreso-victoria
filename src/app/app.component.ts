@@ -17,8 +17,10 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     const userData = JSON.parse(localStorage.getItem('session-data'));
     if (userData) {
-      if (userData.rol === 'admin' || userData.rol === 'juez') {
+      if (userData.rol === 'admin') {
         this.router.navigateByUrl('/home/init');
+      } else if (userData.rol === 'juez') {
+        this.router.navigateByUrl('/home/projects');
       } else {
         this.router.navigateByUrl('/home/add-applicants');
       }
