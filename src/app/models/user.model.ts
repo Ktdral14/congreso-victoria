@@ -25,3 +25,14 @@ export interface Autores {
     num_int: string;
     sexo: string;
 }
+
+export interface JudgeData {
+    id_jueces: string;
+    id_categorias: string;
+    usuario: string;
+    contrasena: string;
+    nombre: string;
+    rol: string;
+    finished: string;
+    deleted: string;
+}

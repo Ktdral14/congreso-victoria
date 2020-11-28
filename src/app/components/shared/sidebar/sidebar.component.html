@@ -16,28 +16,37 @@
                 <p><span>Inicio</span></p>
             </div>
             <li class="item">
-                <a routerLinkActive="active" class="menu-btn">
-                    <i class="fas fa-home"></i><span> Inicio <i
-                            class="fas fa-chevron-right drop-down"></i></span>
-                </a>
+
                 <a [routerLink]="['projects']" routerLinkActive="active" class="menu-btn">
                     <i class="fas fa-home"></i><span> Proyectos <i
                             class="fas fa-chevron-right drop-down"></i></span>
                 </a>
-                <a [routerLink]="['add-applicants']" routerLinkActive="active" class="menu-btn">
+                <a *ngIf="!isAAdmin && !isAJudge" [routerLink]="['add-applicants']" routerLinkActive="active" class="menu-btn">
                     <i class="fas fa-users"></i><span> Registro <i
                             class="fas fa-chevron-right drop-down"></i></span>
                 </a>
 
-                <a [routerLink]="['add-proposal']" routerLinkActive="active" class="menu-btn">
+                <a *ngIf="!isAAdmin && !isAJudge" [routerLink]="['add-proposal']" routerLinkActive="active" class="menu-btn">
                     <i class="far fa-file-alt"></i><span> Propuesta <i
                             class="fas fa-chevron-right drop-down"></i></span>
                 </a>
 
-                <a [routerLink]="['judges']" routerLinkActive="active" class="menu-btn">
+
+                <a *ngIf="isAAdmin" [routerLink]="['judges-proyects']" routerLinkActive="active" class="menu-btn">
+                    <i class="far fa-file-alt"></i><span> Asignar proyectos <i
+                            class="fas fa-chevron-right drop-down"></i></span>
+                </a>
+
+                <a *ngIf="isAAdmin" [routerLink]="['judges']" routerLinkActive="active" class="menu-btn">
                     <i class="far fa-file-alt"></i><span> Jueces <i
                             class="fas fa-chevron-right drop-down"></i></span>
                 </a>
+
+                <a *ngIf="isAAdmin" [routerLink]="['califications']" routerLinkActive="active" class="menu-btn">
+                    <i class="far fa-file-alt"></i><span> Calificaciones <i
+                            class="fas fa-chevron-right drop-down"></i></span>
+                </a>
+
 
                 <a [routerLink]="['']" class="menu-btn" style="cursor: pointer;" (click)="cerrar()">
                     <i class="fas fa-times-circle"></i><span> Cerrar sesión</span>
@@ -57,12 +66,3 @@
     </div>
 
 </div>
-<!-- 
-
-<script type="text/javascript">
-	$(document).ready(function () {
-		$(".sidebar-btn").click(function () {
-			$(".wrapper").toggleClass("collapse");
-		});
-	});
-</script> -->

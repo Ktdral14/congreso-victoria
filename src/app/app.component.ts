@@ -12,11 +12,16 @@ import { UtilsService } from './utils/utils.service';
 export class AppComponent implements OnInit {
   title = 'Premio estatal';
 
-  constructor(private router: Router,public _utilService: UtilsService) { }
+  constructor(private router: Router, public _utilService: UtilsService) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('session-data')) {
-      this.router.navigateByUrl('/home/add-applicants');
+    const userData = JSON.parse(localStorage.getItem('session-data'));
+    if (userData) {
+      if (userData.rol === 'admin' || userData.rol === 'juez') {
+        this.router.navigateByUrl('/home/init');
+      } else {
+        this.router.navigateByUrl('/home/add-applicants');
+      }
     } else {
       this.router.navigateByUrl('/');
     }

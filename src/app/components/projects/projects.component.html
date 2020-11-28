@@ -1,6 +1,19 @@
+<swal class="swal-wide " #swalidVid title="Se redireccionara a Youtube" [swalOptions]="{customClass: 'clase'}">
+    <div *swalPortal>
+        <div *ngIf="video">
+            <div class="contenedor-video">
+            </div>
+        </div>
+
+    </div>
+</swal>
+<div class="desactivar d-flex align-items-center justify-content-center" *ngIf="userData.finished == 'Si' || terminoEvaluacion">
+    <h1>PROYECTOS EVALUADOS</h1>
+</div>
 <div class="container-fluid">
+    <button class="btn btn-outline-danger mb-2" (click)="updateValidationProjects()">Terminar Evaluación</button>
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <div class="card card-style">
                 <div class="card-header">
                     <h6>Propuestas a evaluar</h6>
@@ -13,346 +26,341 @@
                                 <th>Opciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Propuesta 1</td>
+                        <tbody *ngFor="let proyecto of proyectos">
+                            <tr class="d-flex justify-content-center align-content-center">
+                                <td>{{proyecto.nombre_propuesta}}</td>
                                 <td>
-                                    <button>PDFG</button>
-                                    <button>PDFExt</button>
-                                    <button>Video</button>
+                                    <button class="btn btn-success mr-1" (click)="descargarAcusePDF(proyecto)">PDFG</button>
+                                    <button class="btn btn-success mr-1" (click)="abrirPDFExt(proyecto.propuesta)">PDFExt</button>
+                                    <button class="btn btn-success mr-1" (click)="abrirVideo(proyecto.url)">Video</button>
+                                    <button class="btn btn-success" (click)="setProyectoActual(proyecto)" data-toggle="collapse" data-target="#collapseCalificar" aria-expanded="false" aria-controls="collapseCalificar">Calificar</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">
-                    <h6>Opciones de propuesta</h6>
-                </div>
-                <div class="card-body">
-                    <table>
-                        <thead>
 
-                        </thead>
-                        <tbody>
+                    <div class="collapse" id="collapseCalificar">
+                        <div class="card-body">
+                            <form [formGroup]="formCalificaciones" action="">
+                                <table class="table table-hover">
+                                    <thead class="thead-ligth">
+                                        <th>Criterios de Evaluación</th>
+                                        <th>Min</th>
+                                        <th>Max</th>
+                                        <th>Calificación</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>El proyecto que se presenta cumple con el requisito de provenir de un proyecto de innovación ya sea en producto (bien o servicio) o de un proceso, para establecer el meritorio de innovación.</td>
+                                            <td>No</td>
+                                            <td>Si</td>
+                                            <td>
+                                                <input type="radio" value="1" formControlName="innovador"> Si
+                                                <input type="radio" value="0" formControlName="innovador"> No
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Propone elementos tecnológicos innovadores, creativos y de vanguardia para la creación, solución o mejora, utilizando nuevas tecnologías o que mejoren las existentes en un producto o un proceso.</td>
+                                            <td>0</td>
+                                            <td>25</td>
+                                            <td>
+                                                <input type="number" min="0" max="25" formControlName="elementos_tecnologicos">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Contribuye a mejorar alguna(s) característica(s) y/o elemento(s) (tiempo, recursos financieros, humanos, procedimiento, etc.) del proceso o producto para el cual fue diseñado o modificado.</td>
+                                            <td>0</td>
+                                            <td>25</td>
+                                            <td>
+                                                <input type="number" min="0" max="25" formControlName="contribuye">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Aplica teorías, métodos, cocimientos, análisis, etc. Los cuales demuestran un alto nivel de dominio de conocimientos y/o técnicas de innovación.</td>
+                                            <td>0</td>
+                                            <td>25</td>
+                                            <td>
+                                                <input type="number" min="0" max="25" formControlName="aplica_teorias">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Usa y promueve el cumplimiento de las normas y estándares nacionales y/o internacionales en la implementación de su propuesta de innovación.</td>
+                                            <td>0</td>
+                                            <td>25</td>
+                                            <td>
+                                                <input type="number" min="0" max="25" formControlName="promueve">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <th>Apartado</th>
+                                        <th>Criterios de evaluacion</th>
+                                        <th>Min</th>
+                                        <th>Max</th>
+                                        <th>Calificación</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Indice</td>
+                                            <td>Presenta de manera estructurada el índice del trabajo.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="25" formControlName="indice">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Introducción</td>
+                                            <td>Presenta de manera breve y concisa una guía sobre la estructura del contenido del documento así cómo desarrolló la investigación.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="25" formControlName="introduccion">
+                                            </td>
+                                        </tr>
+                                        <td>Objetivos</td>
+                                        <tr>
+                                            <td></td>
+                                            <td>Describe la población a la que va dirigido y lo redacta de forma específica, medible, alcanzable, relevante y temporal.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="objetivos1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>La redacción del objetivo general, es claro, preciso y conciso. utilizando los verbos adecuados para definir los productos de investigación.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="objetivos2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Distingue entre objetivos generales y específicos de investigación, los cuales distinguen producción de conocimiento y de desarrollo de tecnología.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="objetivos3">
+                                            </td>
+                                        </tr>
+                                        <td>Importancia y justificación</td>
+                                        <tr>
+                                            <td></td>
+                                            <td>Describe con claridad las ideas clave en la formulación del problema de investigación.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="importancia1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Expone un enfoque innovador para la solución de un problema, a la demanda o necesidad detectada.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="importancia2">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <th>Apartado</th>
+                                        <th>Criterios de evaluacion</th>
+                                        <th>Min</th>
+                                        <th>Max</th>
+                                        <th>Calificación</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Descripcion de la propuesta</td>
+                                            <td>Describe de manera clara la propuesta de innovación planteada</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="descripcion">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Identifica nuevos hallazgos</td>
+                                            <td>Define con precisión y de manera clara sus nuevos hallazgos, destacando la objetividad de los mismo.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="identificacion">
+                                            </td>
+                                        </tr>
 
-                        </tbody>
-                    </table>
+                                        <tr>
+                                            <td>Marco Metodologico</td>
+                                            <td>-Refiere la solución del problema a partir de métodos, técnicas, teorías extraídas y recopiladas del campo de la investigación de interés de acuerdo con el tema del proyecto.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="marco1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>-Sustenta el desarrollo del proyecto a través de un contraste de diversas teorías actuales utilizando fuentes congruentes y confiables como libros, ensayos, y revistas científicas.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="marco2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Etapas y alcances</td>
+                                            <td>Utiliza procedimientos estructurales para definir el desarrollo temporal de su propuesta así como los alcances de la misma.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="etapas">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <th>Apartado</th>
+                                        <th>Criterios de evaluacion</th>
+                                        <th>Min</th>
+                                        <th>Max</th>
+                                        <th>Calificación</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Experiencia científico técnica alcanzada</td>
+                                            <td>Utiliza métodos numéricos, gráficos o analíticos, cuantitativos y/o cualitativos para el análisis e interpretación de los resultados mediante una redacción clara, cuadros y figuras.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="experiencia">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vinculación institucional y organizacional</td>
+                                            <td>La propuesta plantea un alto índice de cooperación entre instituciones y/o con la organización donde se desarrolla la propuesta.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="vinculacion">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Impacto economico y social</td>
+                                            <td>-Considera que la propuesta es correcta, tomando en cuenta el lugar donde se desarrolla la propuesta así como sus factores económicos.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="impacto1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>-Contribuye a mejorar el ambiente, la cultura, el desarrollo social o comunitario en el sector productivo o comunidad.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="impacto2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Factibilidad economica</td>
+                                            <td>El grado de la solución, cuenta con disponibilidad tecnológica que sea viable y factible.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="factibilidad1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Los recursos económicos presupuestados y/o utilizados son coherentes con las actividades a realizadas.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="factibilidad2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>¿Son reales y consistentes los supuestos utilizados para estimar los ingresos del emprendimiento y/ solución?</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="factibilidad3">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Evidencia reportada</td>
+                                            <td>La evidencia contribuye al entendimiento claro de la implementación de la propuesta, así como para la Interpretación adecuada de la misma.</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="evidencia">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Resultados esperados</td>
+                                            <td>¿La solución planteada atiende a la problemática de forma efectiva?</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="resultados1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>¿La solución planteada tiene un impacto considerable en el territorio?</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="resultados2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>¿El proyecto planteado tiene pertinencia a nivel regional y estatal?"</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="resultados3">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>¿Los gastos presupuestados consideran el costo beneficio dentro del lugar donde es implementada la propuesta?</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td>
+                                                <input type="number" min="0" max="10" formControlName="resultados4">
+                                            </td>
+                                        </tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button (click)="guardarCalificaciones()" class="btn btn-primary" data-toggle="collapse" data-target="#collapseCalificar" aria-expanded="false" aria-controls="collapseCalificar">Guardar</button>
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div>
-    <table>
-        <thead>
-            <th style="width: 500px;">Criterios de Evaluación</th>
-            <th>Min</th>
-            <th>Max</th>
-            <th>Calificación</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>El proyecto que se presenta cumple con el requisito de provenir de un proyecto de innovación ya sea en producto (bien o servicio) o de un proceso, para establecer el meritorio de innovación.</td>
-                <td>No</td>
-                <td>Si</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Propone elementos tecnológicos innovadores, creativos y de vanguardia para la creación, solución o mejora, utilizando nuevas tecnologías o que mejoren las existentes en un producto o un proceso.</td>
-                <td>0</td>
-                <td>25</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Contribuye a mejorar alguna(s) característica(s) y/o elemento(s) (tiempo, recursos financieros, humanos, procedimiento, etc.) del proceso o producto para el cual fue diseñado o modificado.</td>
-                <td>0</td>
-                <td>25</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Aplica teorías, métodos, cocimientos, análisis, etc. Los cuales demuestran un alto nivel de dominio de conocimientos y/o técnicas de innovación.</td>
-                <td>0</td>
-                <td>25</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Usa y promueve el cumplimiento de las normas y estándares nacionales y/o internacionales en la implementación de su propuesta de innovación.</td>
-                <td>0</td>
-                <td>25</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <hr>
-    <table>
-        <thead>
-            <th style="width: 300px;">Apartado</th>
-            <th style="width: 700px;">Criterios de evaluacion</th>
-            <th>Min</th>
-            <th>Max</th>
-            <th>Calificación</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Indice</td>
-                <td>Presenta de manera estructurada el índice del trabajo.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Introducción</td>
-                <td>Presenta de manera breve y concisa una guía sobre la estructura del contenido del documento así cómo desarrolló la investigación.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <td>Objetivos</td>
-            <tr>
-                <td></td>
-                <td>Describe la población a la que va dirigido y lo redacta de forma específica, medible, alcanzable, relevante y temporal.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>La redacción del objetivo general, es claro, preciso y conciso. utilizando los verbos adecuados para definir los productos de investigación.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Distingue entre objetivos generales y específicos de investigación, los cuales distinguen producción de conocimiento y de desarrollo de tecnología.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <td>Importancia y justificación</td>
-            <tr>
-                <td></td>
-                <td>Describe con claridad las ideas clave en la formulación del problema de investigación.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Expone un enfoque innovador para la solución de un problema, a la demanda o necesidad detectada.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <hr>
-    <table>
-        <thead>
-            <th style="width: 300px;">Apartado</th>
-            <th style="width: 700px;">Criterios de evaluacion</th>
-            <th>Min</th>
-            <th>Max</th>
-            <th>Calificación</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Descripcion de la propuesta</td>
-                <td>Describe de manera clara la propuesta de innovación planteada</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Identifica nuevos hallazgos</td>
-                <td>Define con precisión y de manera clara sus nuevos hallazgos, destacando la objetividad de los mismo.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-
-            <tr>
-                <td>Marco Metodologico</td>
-                <td>-Refiere la solución del problema a partir de métodos, técnicas, teorías extraídas y recopiladas del campo de la investigación de interés de acuerdo con el tema del proyecto.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>-Sustenta el desarrollo del proyecto a través de un contraste de diversas teorías actuales utilizando fuentes congruentes y confiables como libros, ensayos, y revistas científicas.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Etapas y alcances</td>
-                <td>Utiliza procedimientos estructurales para definir el desarrollo temporal de su propuesta así como los alcances de la misma.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <hr>
-    <table>
-        <thead>
-            <th style="width: 300px;">Apartado</th>
-            <th style="width: 700px;">Criterios de evaluacion</th>
-            <th>Min</th>
-            <th>Max</th>
-            <th>Calificación</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Experiencia científico técnica alcanzada</td>
-                <td>Utiliza métodos numéricos, gráficos o analíticos, cuantitativos y/o cualitativos para el análisis e interpretación de los resultados mediante una redacción clara, cuadros y figuras.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Vinculación institucional y organizacional</td>
-                <td>La propuesta plantea un alto índice de cooperación entre instituciones y/o con la organización donde se desarrolla la propuesta.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Impacto economico y social</td>
-                <td>-Considera que la propuesta es correcta, tomando en cuenta el lugar donde se desarrolla la propuesta así como sus factores económicos.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>-Contribuye a mejorar el ambiente, la cultura, el desarrollo social o comunitario en el sector productivo o comunidad.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Factibilidad economica</td>
-                <td>El grado de la solución, cuenta con disponibilidad tecnológica que sea viable y factible.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Los recursos económicos presupuestados y/o utilizados son coherentes con las actividades a realizadas.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>¿Son reales y consistentes los supuestos utilizados para estimar los ingresos del emprendimiento y/ solución?</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Evidencia reportada</td>
-                <td>La evidencia contribuye al entendimiento claro de la implementación de la propuesta, así como para la Interpretación adecuada de la misma.</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>Resultados esperados</td>
-                <td>¿La solución planteada atiende a la problemática de forma efectiva?</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>¿La solución planteada tiene un impacto considerable en el territorio?</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>¿El proyecto planteado tiene pertinencia a nivel regional y estatal?"</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>¿Los gastos presupuestados consideran el costo beneficio dentro del lugar donde es implementada la propuesta?</td>
-                <td>0</td>
-                <td>10</td>
-                <td>
-                    <input type="text">
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </div>

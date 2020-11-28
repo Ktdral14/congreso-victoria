@@ -13,6 +13,12 @@ import { AddApplicantsComponent } from './components/add-applicants/add-applican
 import { HttpClientModule } from '@angular/common/http';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { JudgesProyectsComponent } from './components/judges-proyects/judges-proyects.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { JudgesComponent } from './components/judges/judges.component';
+import { CalificationsComponent } from './components/califications/califications.component';
+import { InitComponent } from './components/init/init.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.dots
@@ -29,6 +35,10 @@ const ngWizardConfig: NgWizardConfig = {
     AddProposalComponent,
     AddApplicantsComponent,
     ProjectsComponent,
+    JudgesProyectsComponent,
+    JudgesComponent,
+    CalificationsComponent,
+    InitComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +46,9 @@ const ngWizardConfig: NgWizardConfig = {
     FormsModule,
     ReactiveFormsModule,
     NgWizardModule.forRoot(ngWizardConfig),
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    SweetAlert2Module.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
