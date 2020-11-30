@@ -1,3 +1,7 @@
+h1,h2,h3,h4,h5,h6,th,td,p{
+    cursor: default;
+}
+
 .card-style {
     height: 99%;
 }
@@ -14,5 +18,30 @@
         position: absolute;
         color: #000000;
     }
+
+}
+
+.btn-opciones{
+    background: #43B4E4;
+    color: #fff;
+}
+
+.cabecera-tabla{
+    background: #97c83c;
+    color: #fff;
+}
+
+.cabecera-tabla-apartados{
+    background: #43B4E4;
+    color: #fff;
+}
+
+.btn-guardar-verde{
+    background: #97c83c;
+    color: #fff;
+}
+
+.titulo-propuestas{
+    font-weight: bold;
 
 }
