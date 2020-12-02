@@ -7,8 +7,7 @@
 
     </div>
 </swal>
-<div class="desactivar d-flex align-items-center justify-content-center"
-    *ngIf="userData.finished == 'Si' || terminoEvaluacion">
+<div class="desactivar d-flex align-items-center justify-content-center" *ngIf="userData.finished == 'Si' || terminoEvaluacion">
     <h1>PROYECTOS EVALUADOS</h1>
 </div>
 <div class="container-fluid">
@@ -24,7 +23,7 @@
                             <button class="btn btn-outline-danger mb-2" (click)="updateValidationProjects()">Terminar Evaluación</button>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="card-body">
 
@@ -45,12 +44,9 @@
                                                 class="fas fa-file-pdf"></i></span></button>
                                     <button class="btn btn-opciones ml-2" (click)="abrirPDFExt(proyecto.propuesta)">PDF
                                         Extenso</button>
-                                    <button class="btn btn-opciones ml-2" id="video"
-                                        (click)="abrirVideo(proyecto.url)"><span><i
+                                    <button class="btn btn-opciones ml-2" id="video" (click)="abrirVideo(proyecto.url)"><span><i
                                                 class="fab fa-youtube"></i></span></button>
-                                    <button class="btn btn-opciones ml-2" (click)="setProyectoActual(proyecto)"
-                                        data-toggle="collapse" data-target="#collapseCalificar" aria-expanded="false"
-                                        aria-controls="collapseCalificar"><span><i
+                                    <button class="btn btn-opciones ml-2" (click)="setProyectoActual(proyecto)" data-toggle="collapse" data-target="#collapseCalificar" aria-expanded="false" aria-controls="collapseCalificar"><span><i
                                                 class="fas fa-edit"></i></span></button>
                                 </td>
                             </tr>
@@ -74,31 +70,24 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>El proyecto que se presenta cumple con el requisito de provenir de un
-                                                proyecto de innovación ya sea en producto (bien o servicio) o de un
-                                                proceso, para establecer el meritorio de innovación.</td>
+                                            <td>El proyecto que se presenta cumple con el requisito de provenir de un proyecto de innovación ya sea en producto (bien o servicio) o de un proceso, para establecer el meritorio de innovación.</td>
                                             <td>No</td>
                                             <td>Si</td>
                                             <td>
-                                                <input type="radio" value="1" formControlName="innovador"> Si
-                                                <input type="radio" value="0" formControlName="innovador"> No
+                                                <input type="radio" value="1" formControlName="innovador" #radioB1 (change)="cambioRadio(radioB1.value)"> Si
+                                                <input type="radio" value="0" formControlName="innovador" #radioB2 (change)="cambioRadio(radioB2.value)"> No
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Propone elementos tecnológicos innovadores, creativos y de vanguardia
-                                                para la creación, solución o mejora, utilizando nuevas tecnologías o que
-                                                mejoren las existentes en un producto o un proceso.</td>
+                                            <td>Propone elementos tecnológicos innovadores, creativos y de vanguardia para la creación, solución o mejora, utilizando nuevas tecnologías o que mejoren las existentes en un producto o un proceso.</td>
                                             <td>0</td>
                                             <td>25</td>
                                             <td>
-                                                <input type="number" min="0" max="25"
-                                                    formControlName="elementos_tecnologicos">
+                                                <input type="number" min="0" max="25" formControlName="elementos_tecnologicos">
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Contribuye a mejorar alguna(s) característica(s) y/o elemento(s)
-                                                (tiempo, recursos financieros, humanos, procedimiento, etc.) del proceso
-                                                o producto para el cual fue diseñado o modificado.</td>
+                                            <td>Contribuye a mejorar alguna(s) característica(s) y/o elemento(s) (tiempo, recursos financieros, humanos, procedimiento, etc.) del proceso o producto para el cual fue diseñado o modificado.</td>
                                             <td>0</td>
                                             <td>25</td>
                                             <td>
@@ -106,9 +95,8 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Aplica teorías, métodos, cocimientos, análisis, etc. Los cuales
-                                                demuestran un alto nivel de dominio de conocimientos y/o técnicas de
-                                                innovación.</td>
+                                            <td>Aplica teorías, métodos, cocimientos, análisis, etc. Los cuales demuestran un alto nivel de dominio de conocimientos y/o técnicas de innovación.
+                                            </td>
                                             <td>0</td>
                                             <td>25</td>
                                             <td>
@@ -116,8 +104,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Usa y promueve el cumplimiento de las normas y estándares nacionales y/o
-                                                internacionales en la implementación de su propuesta de innovación.</td>
+                                            <td>Usa y promueve el cumplimiento de las normas y estándares nacionales y/o internacionales en la implementación de su propuesta de innovación.</td>
                                             <td>0</td>
                                             <td>25</td>
                                             <td>
@@ -147,8 +134,7 @@
                                         </tr>
                                         <tr>
                                             <td>Introducción</td>
-                                            <td>Presenta de manera breve y concisa una guía sobre la estructura del
-                                                contenido del documento así cómo desarrolló la investigación.</td>
+                                            <td>Presenta de manera breve y concisa una guía sobre la estructura del contenido del documento así cómo desarrolló la investigación.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -158,8 +144,7 @@
                                         <td>Objetivos</td>
                                         <tr>
                                             <td></td>
-                                            <td>Describe la población a la que va dirigido y lo redacta de forma
-                                                específica, medible, alcanzable, relevante y temporal.</td>
+                                            <td>Describe la población a la que va dirigido y lo redacta de forma específica, medible, alcanzable, relevante y temporal.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -168,9 +153,8 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td>La redacción del objetivo general, es claro, preciso y conciso.
-                                                utilizando los verbos adecuados para definir los productos de
-                                                investigación.</td>
+                                            <td>La redacción del objetivo general, es claro, preciso y conciso. utilizando los verbos adecuados para definir los productos de investigación.
+                                            </td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -179,9 +163,8 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td>Distingue entre objetivos generales y específicos de investigación, los
-                                                cuales distinguen producción de conocimiento y de desarrollo de
-                                                tecnología.</td>
+                                            <td>Distingue entre objetivos generales y específicos de investigación, los cuales distinguen producción de conocimiento y de desarrollo de tecnología.
+                                            </td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -191,8 +174,8 @@
                                         <td>Importancia y justificación</td>
                                         <tr>
                                             <td></td>
-                                            <td>Describe con claridad las ideas clave en la formulación del problema de
-                                                investigación.</td>
+                                            <td>Describe con claridad las ideas clave en la formulación del problema de investigación.
+                                            </td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -201,8 +184,7 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td>Expone un enfoque innovador para la solución de un problema, a la
-                                                demanda o necesidad detectada.</td>
+                                            <td>Expone un enfoque innovador para la solución de un problema, a la demanda o necesidad detectada.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -232,8 +214,7 @@
                                         </tr>
                                         <tr>
                                             <td>Identifica nuevos hallazgos</td>
-                                            <td>Define con precisión y de manera clara sus nuevos hallazgos, destacando
-                                                la objetividad de los mismo.</td>
+                                            <td>Define con precisión y de manera clara sus nuevos hallazgos, destacando la objetividad de los mismo.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -243,9 +224,7 @@
 
                                         <tr>
                                             <td>Marco Metodologico</td>
-                                            <td>-Refiere la solución del problema a partir de métodos, técnicas, teorías
-                                                extraídas y recopiladas del campo de la investigación de interés de
-                                                acuerdo con el tema del proyecto.</td>
+                                            <td>-Refiere la solución del problema a partir de métodos, técnicas, teorías extraídas y recopiladas del campo de la investigación de interés de acuerdo con el tema del proyecto.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -254,9 +233,7 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td>-Sustenta el desarrollo del proyecto a través de un contraste de
-                                                diversas teorías actuales utilizando fuentes congruentes y confiables
-                                                como libros, ensayos, y revistas científicas.</td>
+                                            <td>-Sustenta el desarrollo del proyecto a través de un contraste de diversas teorías actuales utilizando fuentes congruentes y confiables como libros, ensayos, y revistas científicas.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -265,8 +242,7 @@
                                         </tr>
                                         <tr>
                                             <td>Etapas y alcances</td>
-                                            <td>Utiliza procedimientos estructurales para definir el desarrollo temporal
-                                                de su propuesta así como los alcances de la misma.</td>
+                                            <td>Utiliza procedimientos estructurales para definir el desarrollo temporal de su propuesta así como los alcances de la misma.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -287,9 +263,7 @@
                                     <tbody>
                                         <tr>
                                             <td>Experiencia científico técnica alcanzada</td>
-                                            <td>Utiliza métodos numéricos, gráficos o analíticos, cuantitativos y/o
-                                                cualitativos para el análisis e interpretación de los resultados
-                                                mediante una redacción clara, cuadros y figuras.</td>
+                                            <td>Utiliza métodos numéricos, gráficos o analíticos, cuantitativos y/o cualitativos para el análisis e interpretación de los resultados mediante una redacción clara, cuadros y figuras.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -298,8 +272,7 @@
                                         </tr>
                                         <tr>
                                             <td>Vinculación institucional y organizacional</td>
-                                            <td>La propuesta plantea un alto índice de cooperación entre instituciones
-                                                y/o con la organización donde se desarrolla la propuesta.</td>
+                                            <td>La propuesta plantea un alto índice de cooperación entre instituciones y/o con la organización donde se desarrolla la propuesta.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -308,8 +281,7 @@
                                         </tr>
                                         <tr>
                                             <td>Impacto economico y social</td>
-                                            <td>-Considera que la propuesta es correcta, tomando en cuenta el lugar
-                                                donde se desarrolla la propuesta así como sus factores económicos.</td>
+                                            <td>-Considera que la propuesta es correcta, tomando en cuenta el lugar donde se desarrolla la propuesta así como sus factores económicos.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -318,8 +290,7 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td>-Contribuye a mejorar el ambiente, la cultura, el desarrollo social o
-                                                comunitario en el sector productivo o comunidad.</td>
+                                            <td>-Contribuye a mejorar el ambiente, la cultura, el desarrollo social o comunitario en el sector productivo o comunidad.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -328,8 +299,7 @@
                                         </tr>
                                         <tr>
                                             <td>Factibilidad economica</td>
-                                            <td>El grado de la solución, cuenta con disponibilidad tecnológica que sea
-                                                viable y factible.</td>
+                                            <td>El grado de la solución, cuenta con disponibilidad tecnológica que sea viable y factible.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -338,8 +308,7 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td>Los recursos económicos presupuestados y/o utilizados son coherentes con
-                                                las actividades a realizadas.</td>
+                                            <td>Los recursos económicos presupuestados y/o utilizados son coherentes con las actividades a realizadas.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -348,8 +317,7 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td>¿Son reales y consistentes los supuestos utilizados para estimar los
-                                                ingresos del emprendimiento y/ solución?</td>
+                                            <td>¿Son reales y consistentes los supuestos utilizados para estimar los ingresos del emprendimiento y/ solución?</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -358,8 +326,7 @@
                                         </tr>
                                         <tr>
                                             <td>Evidencia reportada</td>
-                                            <td>La evidencia contribuye al entendimiento claro de la implementación de
-                                                la propuesta, así como para la Interpretación adecuada de la misma.</td>
+                                            <td>La evidencia contribuye al entendimiento claro de la implementación de la propuesta, así como para la Interpretación adecuada de la misma.</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -397,8 +364,7 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td>¿Los gastos presupuestados consideran el costo beneficio dentro del
-                                                lugar donde es implementada la propuesta?</td>
+                                            <td>¿Los gastos presupuestados consideran el costo beneficio dentro del lugar donde es implementada la propuesta?</td>
                                             <td>0</td>
                                             <td>10</td>
                                             <td>
@@ -410,9 +376,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>
-                                            <button (click)="guardarCalificaciones()" class="btn btn-guardar-verde"
-                                                data-toggle="collapse" data-target="#collapseCalificar"
-                                                aria-expanded="false" aria-controls="collapseCalificar">Guardar</button>
+                                            <button (click)="guardarCalificaciones()" class="btn btn-guardar-verde" data-toggle="collapse" data-target="#collapseCalificar" aria-expanded="false" aria-controls="collapseCalificar">Guardar</button>
                                         </td>
                                     </tbody>
                                 </table>

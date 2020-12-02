@@ -62,6 +62,7 @@ export class ProjectsComponent implements OnInit {
   valores: any;
   validacionProjectos: string;
   terminoEvaluacion: any;
+  cambio = false;
   constructor(
     private juecesServices: JudgesService,
     private calificarProyecto: CalificarProyectoService,
@@ -165,7 +166,7 @@ export class ProjectsComponent implements OnInit {
       resultados4: [0, [Validators.required, Validators.max(10), Validators.min(0), Validators.pattern(Reg)]],
     });
   }
-  setProyectoActual(proyecto: any){
+  setProyectoActual(proyecto: any) {
     this.proyectoActual = proyecto;
     this.calificarProyecto.getProyectoCalificado(this.proyectoActual.id_proyectos).subscribe(
       dara => {
@@ -330,9 +331,6 @@ export class ProjectsComponent implements OnInit {
     );
   }
 
-  calificado(proyecto: any) {
-    
-  }
   abrirPDFExt(pdf: string) {
     const ruta = pdf.split('uploads')[1];
 
@@ -367,8 +365,30 @@ export class ProjectsComponent implements OnInit {
         console.log(err);
       }
     );
+  }
 
-    
+  cambioRadio(id: number) {
+    if (id == 1) {
+      this.cambio = true;
+      this.formCalificaciones.controls['elementos_tecnologicos'].enable();
+      this.formCalificaciones.controls['contribuye'].enable();
+      this.formCalificaciones.controls['aplica_teorias'].enable();
+      this.formCalificaciones.controls['promueve'].enable();
+    }
+    else if (id == 0) {
+      this.cambio = false;
+      this.formCalificaciones.patchValue({
+        elementos_tecnologicos: Number(0),
+        contribuye: Number(0),
+        aplica_teorias: Number(0),
+        promueve: Number(0),
+      });
+
+      this.formCalificaciones.controls['elementos_tecnologicos'].disable();
+      this.formCalificaciones.controls['contribuye'].disable();
+      this.formCalificaciones.controls['aplica_teorias'].disable();
+      this.formCalificaciones.controls['promueve'].disable();
+    }
   }
 
   descargarAcusePDF(proyecto: any) {
