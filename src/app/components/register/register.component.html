@@ -4,6 +4,11 @@
     </div>
 </div>
 
+<div class="desactivar d-flex align-items-center container-fluid justify-content-center" *ngIf="tiempoTerminado">
+    <img class="ilustracion" src="assets/img/ilustracion1.svg" alt="">
+    <h1>Se acabó el tiempo para registrar</h1>
+</div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-2">
@@ -21,15 +26,13 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="apellidoPaterno">Apellido paterno <span class="requerid-fields">*</span>:</label>
-                        <input type="text" formControlName="a_paterno" placeholder="Apellido paterno" class="form-control" id="apellidoPaterno"
-                            required>
+                        <input type="text" formControlName="a_paterno" placeholder="Apellido paterno" class="form-control" id="apellidoPaterno" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="apellidoMaterno">Apellido materno <span class="requerid-fields">*</span>:</label>
-                        <input type="text" formControlName="a_materno" placeholder="Apellido materno" class="form-control" id="apellidoMaterno"
-                            required>
+                        <input type="text" formControlName="a_materno" placeholder="Apellido materno" class="form-control" id="apellidoMaterno" required>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="fechaNac">Fecha de nacimiento <span class="requerid-fields">*</span>:</label>

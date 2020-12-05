@@ -47,9 +47,7 @@ export class AddProposalComponent implements OnInit {
     const hora = 21;
     let fecha: Date = new Date();
     if (dia <= fecha.getDate()) {
-      if (hora <= fecha.getHours()) {
         this.tiempoTerminado = true;
-      }
     }
     this.propuestaTermianda = JSON.parse(localStorage.getItem('termino-' + this.userData.id_usuarios)).termino;
     this.formPropuesta = formBuilder.group({
