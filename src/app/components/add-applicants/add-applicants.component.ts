@@ -5,6 +5,7 @@ import swal from 'sweetalert2';
 import { UserData } from 'src/app/models/user.model';
 import { UtilsService } from '../../utils/utils.service'
 import { Router } from '@angular/router';
+import { getLocaleDateFormat } from '@angular/common';
 
 
 @Component({
@@ -33,6 +34,7 @@ export class AddApplicantsComponent implements OnInit {
 
   userData: UserData;
   registroTerminado = false;
+  tiempoTerminado = false;
   constructor(
     private formBuilder: FormBuilder,
     private applicants: ApplicantsService,
@@ -44,6 +46,14 @@ export class AddApplicantsComponent implements OnInit {
     const propuestaData = JSON.parse(localStorage.getItem('registro-' + this.userData.id_usuarios));
     if (!propuestaData) {
       localStorage.setItem('registro-' + this.userData.id_usuarios, JSON.stringify({termino: false}));
+    }
+    const dia = 4;
+    const hora = 21;
+    let fecha: Date = new Date();
+    if (dia <= fecha.getDate()) {
+      if (hora <= fecha.getHours()) {
+        this.tiempoTerminado = true;
+      }
     }
     this.registroTerminado = JSON.parse(localStorage.getItem('registro-' + this.userData.id_usuarios)).termino;
     this.formAspirante = this.formBuilder.group({
