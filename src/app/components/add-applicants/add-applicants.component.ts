@@ -51,9 +51,7 @@ export class AddApplicantsComponent implements OnInit {
     const hora = 21;
     let fecha: Date = new Date();
     if (dia <= fecha.getDate()) {
-      if (hora <= fecha.getHours()) {
         this.tiempoTerminado = true;
-      }
     }
     this.registroTerminado = JSON.parse(localStorage.getItem('registro-' + this.userData.id_usuarios)).termino;
     this.formAspirante = this.formBuilder.group({

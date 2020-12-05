@@ -31,6 +31,7 @@ export class AddProposalComponent implements OnInit {
   cantidadPalabras = 0;
   cantidadLimite = false;
   propuestaTermianda = false;
+  tiempoTerminado = false;
   constructor(
     private ngWizardService: NgWizardService,
     private formBuilder: FormBuilder,
@@ -41,6 +42,12 @@ export class AddProposalComponent implements OnInit {
     const propuestaData = JSON.parse(localStorage.getItem('termino-' + this.userData.id_usuarios));
     if (!propuestaData) {
       localStorage.setItem('termino-' + this.userData.id_usuarios, JSON.stringify({termino: false}));
+    }
+    const dia = 4;
+    const hora = 21;
+    let fecha: Date = new Date();
+    if (dia <= fecha.getDate()) {
+        this.tiempoTerminado = true;
     }
     this.propuestaTermianda = JSON.parse(localStorage.getItem('termino-' + this.userData.id_usuarios)).termino;
     this.formPropuesta = formBuilder.group({

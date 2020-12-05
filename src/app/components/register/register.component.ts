@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   formRegister: FormGroup;
   validCP = false;
   colonia = [];
+  tiempoTerminado = false;
   constructor(
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
@@ -25,6 +26,13 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private _utilService:UtilsService
   ) {
+    const dia = 4;
+    const hora = 21;
+    let fecha: Date = new Date();
+    if (dia <= fecha.getDate()) {
+        this.tiempoTerminado = true;
+    }
+
     this.formRegister = this.formBuilder.group({
     nombres: ['', [Validators.required]],
     a_paterno: ['', [Validators.required]],
